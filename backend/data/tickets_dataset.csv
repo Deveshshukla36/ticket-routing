@@ -1,0 +1,961 @@
+text,label,template_id
+I want to downgrade from Pro and stop auto-renew,Cancellation,97
+Any plans to support analytics on teh mobile app,Feature Request,49
+notifications aren't showing up on my mobile app asap,Technical Issue,24
+What's the difference between the Basic and enterprise plan,General Inquiry,75
+the site is extremely slow when loading settings.,Technical Issue,20
+"Hello, the API is returning timeout errors on update settings",Technical Issue,22
+Someone else may have access to my account,Account Access,36
+Search results are missing items that clearly exist,Bug Report,66
+"Hi, Do you have a public status page for uptime",General Inquiry,87
+I need a refund for the Starter plan I cancelled,Billing,3
+I'm getting a 500 error when I try to generate a report,Technical Issue,16
+It'd be useful to set reminders inside billing,Feature Request,57
+"Hey team, i tried to cancel but the button doesn't work",Cancellation,95
+Can I pause my subscription instead of cancelling,Cancellation,96
+Nobody explained why my account was charged incorrectly,Complaint,113
+Is there a mobile app available for reports,General Inquiry,78
+What integrations do you support besides Slack,General Inquiry,80
+What's your cancellation policy for Starter,Cancellation,94
+Permissions aren't respected after I invite teammates,Account Access,69
+Why is my invoice $149 higher than last month,Billing,1
+The API is returning timeout errors on generate a report,Technical Issue,22
+it would help to have custom fields in analytics,Feature Request,51
+Can you explain the charge on my credit card ending 3456,Feature Request,2
+"Hello, i need to reset my password but the reset link expired",Account Access,35
+The API is returning timeout errors on set up automation,Technical Issue,22
+Permissions aren't respected after I invite teammates,Bug Report,69
+How many users can I add on the Team plan please help,General Inquiry,85
+Nothing happens when I click save on the billing screen,Technical Issue,28
+editing a record in calendar silently deletes another field,Bug Report,74
+"I regret upgrading to Pro, the experience has been terrible",Complaint,119
+"Hello, This bug has been open for weeks with no update",Complaint,111
+The inbox module throws an error every time I refresh,Technical Issue,27
+The totals on inbox don't match what I entered,Bug Report,60
+please add the ability to duplicate items in inbox asap,Feature Request,56
+Nobody explained why my account was charged incorrectly thanks,Complaint,113
+i'd love a bulk edit option in dashboard,Feature Request,48
+How do I cancel before the next billing cycle,Cancellation,99
+This is the third time I've contacted support about export data thanks,Complaint,106
+my SSO login through Google isn't working anymore please help,Account Access,38
+I want to update my billing address and card details,Billing,6
+Getting a blank white screen after logging in,Technical Issue,21
+It would help to have custom fields in analytics.,Feature Request,51
+teh site is extremely slow when loading calendar,Technical Issue,20
+"I can't log in, it says my password is incorrect.",Account Access,30
+The totals on inbox don't match what I entered,Bug Report,60
+Dates are displaying one day off on calendar asap,Bug Report,62
+Search results are missing items that clearly exist,Bug Report,66
+"Hello, What integrations do you support besides Slack",General Inquiry,80
+Please add multi-language support for dashboard,Feature Request,52
+i keep getting logged out randomly while using analytics asap,Complaint,26
+"Hi, i tried to cancel but the button doesn't work",Cancellation,95
+I'm being asked to verify identity but teh verification fails.,Account Access,44
+the dashboard page shows a broken layout on Safari,Bug Report,67
+Uploads keep failing halfway through on dashboard,Technical Issue,18
+Please consider adding keyboard shortcuts for invite teammates,Feature Request,47
+Please confirm my cancellation was processed,Cancellation,98
+I'm being asked to verify identity but the verification fails,Account Access,44
+It'd be useful to set reminders inside reports,Feature Request,57
+Why does my invoice include a charge I don't recognize,Billing,14
+It would be great if you added dark mode to calendar.,Feature Request,45
+there's a duplicate transaction on my statement for Basic asap,Billing,10
+do you offer annual billing instead of monthly.,Billing,8
+The totals on billing don't match what I entered,Bug Report,60
+would you consider a public API for integrations,Feature Request,55
+The app is unresponsive after the latest update,Technical Issue,29
+I want to update my billing address and card details,Billing,6
+What happens to my data if I downgrade from Basic,General Inquiry,83
+why is my invoice $29 higher than last month thanks,Billing,1
+The analytics module throws an error every time I refresh asap,Technical Issue,27
+Where can I find your API documentation,General Inquiry,81
+do you offer training sessions for new teams,General Inquiry,82
+Can you build an export to Excel option for calendar,Feature Request,46
+"Hi, do you offer training sessions for new teams thanks",General Inquiry,82
+i was promised a callback and never received one,Complaint,110
+Someone else may have access to my account asap,Account Access,36
+"Hi, The chart on integrations shows the wrong numbers",Bug Report,64
+What's your cancellation policy for Team,Cancellation,94
+Uploaded files show teh wrong file size on integrations,Bug Report,72
+Why does my invoice include a charge I don't recognize thanks,Billing,14
+please add the ability to duplicate items in inbox,Feature Request,56
+A dark theme and font size settings would be nice please help,Feature Request,54
+Do you have documentation on how to set up automation,General Inquiry,76
+I'm locked out of my account after too many attempts,Account Access,31
+"Hey team, how many users can I add on the Starter plan",General Inquiry,85
+My session keeps expiring immediately after I sign in,Account Access,42
+I want to cancel my Enterprise subscription immediately,Cancellation,90
+It would be great if you added dark mode to inbox,Feature Request,45
+"Hey team, clicking save on inbox doesn't actually save",Bug Report,65
+What's the difference between the Starter and enterprise plan,General Inquiry,75
+Do you offer training sessions for new teams.,General Inquiry,82
+Please cancel my subscription and delete my data,Cancellation,92
+A recurring task option in calendar would save us time,Feature Request,59
+Getting a blank white screen after logging in,Technical Issue,21
+The magic link email for login never arrives,Account Access,43
+Do you have documentation on how to connect an integration,General Inquiry,76
+what security certifications does your platform have,General Inquiry,88
+I want to downgrade from Team and stop auto-renew,Cancellation,97
+I'm shocked at how this issue was handled,Complaint,117
+I need to transfer account ownership to a colleague,Account Access,39
+Can you support single sign-on for enterprise customers please help,Feature Request,58
+The API is returning timeout errors on generate a report,Technical Issue,22
+I was billed after I already cancelled my account,Billing,9
+it says my account doesn't exist but I've had it for years,Account Access,40
+"I regret upgrading to Team, the experience has been terrible",Complaint,119
+"Hi, My SSO login through Google isn't working anymore",Account Access,38
+Where can I find your API documentation,General Inquiry,81
+How do I close my account permanently,Cancellation,91
+How many users can I add on the Pro plan,General Inquiry,85
+I'd love a bulk edit option in dashboard,Complaint,48
+The pagination on billing skips every other page,Bug Report,70
+"Hey team, What happens to my data if I downgrade from Pro",General Inquiry,83
+"I can't log in, it says my password is incorrect",Account Access,30
+the two-factor authentication code never arrives,Account Access,32
+Permissions aren't respected after I connect an integration.,Bug Report,69
+It'd be useful to set reminders inside analytics,Feature Request,57
+Duplicate entries keep appearing after I generate a report,Bug Report,63
+i need to shut down our whole team's Pro account,Cancellation,103
+"My card on file expired, how do I update payment info",Billing,12
+I'd love a bulk edit option in dashboard,Feature Request,48
+i need to transfer account ownership to a colleague,Account Access,39
+i need to shut down our whole team's Team account,Cancellation,103
+I tried to cancel but the button doesn't work,Cancellation,95
+Getting a blank white screen after logging in,Technical Issue,21
+Search results are missing items that clearly exist,Bug Report,66
+The app keeps crashing every time I open teh integrations page,Technical Issue,15
+Can I get a receipt for tax purposes for this invoice,Billing,11
+Sorting by date on billing is completely out of order,Bug Report,71
+permissions aren't respected after I invite teammates,Bug Report,69
+"I no longer need the Pro plan, cancel it please.",Cancellation,93
+Your support team never responded to my last ticket,Complaint,107
+Your team keeps closing my ticket without fixing anything,Complaint,118
+please add the ability to duplicate items in inbox thanks,Feature Request,56
+The calendar module throws an error every time I refresh thanks,Technical Issue,27
+Uploaded files show the wrong file size on settings,Bug Report,72
+there's a duplicate transaction on my statement for Basic,Billing,10
+my session keeps expiring immediately after I sign in,Account Access,42
+This is teh third time I've contacted support about export data,Complaint,106
+"Hello, Do you offer annual billing instead of monthly",Billing,8
+I'm locked out of my account after too many attempts,Account Access,31
+Editing a record in reports silently deletes another field,Bug Report,74
+can you explain the charge on my credit card ending 3456,Billing,2
+i keep getting logged out randomly while using dashboard,Technical Issue,26
+"Hi, please confirm my cancellation was processed",Cancellation,98
+"My card on file expired, how do I update payment info",Billing,12
+A recurring task option in dashboard would save us time,Feature Request,59
+"Hi, Duplicate entries keep appearing after I set up automation",Bug Report,63
+Your team keeps closing my ticket without fixing anything,Complaint,118
+Can I pause my subscription instead of cancelling thanks,Cancellation,96
+I want to downgrade from Team and stop auto-renew asap,Cancellation,97
+do you offer training sessions for new teams,General Inquiry,82
+How do I cancel before the next billing cycle,Cancellation,99
+I've asked for a manager three times with no response,Complaint,115
+Do you have documentation on how to invite teammates,General Inquiry,76
+Do you offer annual billing instead of monthly,Billing,8
+I keep getting logged out randomly while using integrations thanks,Technical Issue,26
+Can I export my data if I switch providers later.,General Inquiry,89
+Any plans to support billing on the mobile app,Feature Request,49
+I was billed after I already cancelled my account,Billing,9
+someone else may have access to my account,Account Access,36
+A recurring task option in reports would save us time,Feature Request,59
+Please send me a copy of last month's invoice,Billing,5
+The app is unresponsive after the latest update,Technical Issue,29
+"Hello, Duplicate entries keep appearing after I set up automation",Bug Report,63
+"Hello, I need to transfer account ownership to a colleague",Account Access,39
+"Hello, Your support team never responded to my last ticket",Complaint,107
+i'm very unhappy with how long this issue has taken,Complaint,108
+Can I export my data if I switch providers later,General Inquiry,89
+This bug has been open for weeks with no update,Cancellation,111
+the chart on integrations shows the wrong numbers,Bug Report,64
+i need to shut down our whole team's Team account,Cancellation,103
+Please consider adding keyboard shortcuts for update settings,Feature Request,47
+I need a refund for the Enterprise plan I cancelled,Billing,3
+"Hey team, Please cancel my subscription and delete my data",Cancellation,92
+Do you have documentation on how to export data,General Inquiry,76
+can you explain the charge on my credit card ending 3456,Billing,2
+How do I cancel before the next billing cycle,Cancellation,99
+i need to shut down our whole team's Starter account,Cancellation,103
+The page freezes whenever I try to open reports,Technical Issue,25
+Can you support single sign-on for enterprise customers,Feature Request,58
+Any plans to support inbox on the mobile app,Feature Request,49
+Can I try the Enterprise plan before purchasing thanks,General Inquiry,84
+the two-factor authentication code never arrives,Account Access,32
+I can't verify my email address to activate my account,Account Access,37
+Please add the ability to duplicate items in analytics,Feature Request,56
+"Hey team, I'm very unhappy with how long this issue has taken",Complaint,108
+"Hey team, Can you integrate with Slack for generate a report notifications.",Feature Request,53
+Can I try the Enterprise plan before purchasing,General Inquiry,84
+i'm extremely frustrated with the constant reports outages,Complaint,105
+is there an early termination fee for Team,Cancellation,101
+Would you consider a public API for calendar,Feature Request,55
+Your support team never responded to my last ticket,Complaint,107
+could you add a calendar view for settings thanks,Feature Request,50
+Is there a mobile app available for inbox,General Inquiry,78
+how do I get started with settings,General Inquiry,79
+The two-factor autehntication code never arrives,Account Access,32
+"Hi, It'd be useful to set reminders inside settings",Complaint,57
+is there a discount for nonprofits or students,General Inquiry,86
+"I can't log in, it says my password is incorrect",Account Access,30
+"Hey team, I upgraded to Pro but I'm still being charged teh old rate",Billing,13
+"Hi, your team keeps closing my ticket without fixing anything asap",Complaint,118
+Please consider adding keyboard shortcuts for export data,Feature Request,47
+"Hello, I need to reset my password but the reset link expired",Account Access,35
+The page freezes whenever I try to open calendar,Technical Issue,25
+i can't get past teh login screen on any device,Account Access,41
+"I can't log in, it says my password is incorrect asap",Account Access,30
+This bug has been open for weeks with no update,Complaint,111
+"Hello, Please add the ability to duplicate items in integrations",Bug Report,56
+I'm locked out of my account after too many attempts,Account Access,31
+Any plans to support calendar on the mobile app please help,Feature Request,49
+A recurring task option in calendar would save us time,Feature Request,59
+is there an early termination fee for Pro,Cancellation,101
+editing a record in inbox silently deletes another field,Bug Report,74
+"Hello, how many users can I add on the Starter plan",General Inquiry,85
+The discount code didn't apply to my Enterprise purchase,Billing,7
+I'm very unhappy with how long this issue has taken,Complaint,108
+the support experience has been disappointing overall,Complaint,114
+Can you build an export to Excel option for reports,Feature Request,46
+This is the third time I've contacted support about connect an integration,Complaint,106
+"Hey team, The confirmation email shows someone else's details",Bug Report,73
+i need to shut down our whole team's Basic account thanks,Cancellation,103
+duplicate entries keep appearing after I update settings,Cancellation,63
+My account was suspended and I don't know why,Account Access,34
+The confirmation email shows someone else's details,Bug Report,73
+the app keeps crashing every time I open the reports page,Technical Issue,15
+I forgot the email I used to sign up,Account Access,33
+The magic link email for login never arrives asap,Account Access,43
+How many users can I add on the Pro plan,General Inquiry,85
+The API is returning timeout errors on connect an integration,Technical Issue,22
+I forgot the email I used to sign up,Account Access,33
+"Hey team, What are your support hours for Enterprise customers",General Inquiry,77
+I need to transfer account ownership to a colleague,Complaint,39
+Could you add a calendar view for reports,Feature Request,50
+i can't get past the login screen on any device,Account Access,41
+I need a refund for teh Starter plan I cancelled,Billing,3
+the app is unresponsive after the latest update,Technical Issue,29
+What integrations do you support besides Slack,General Inquiry,80
+"Hello, Can I pause my subscription instead of cancelling please help",Cancellation,96
+"Hi, i'm shocked at how this issue was handled please help",Complaint,117
+"Hello, I can't connect the billing integration, it times out",Technical Issue,19
+the site is extremely slow when loading reports,Technical Issue,20
+"I no longer need the Starter plan, cancel it please",Cancellation,93
+Please add multi-language support for integrations thanks,Feature Request,52
+Can you integrate with Slack for export data notifications,Feature Request,53
+"Cancel my renewal, I don't want to be charged again",Cancellation,102
+The discount code didn't apply to my Basic purchase,Billing,7
+"Hey team, My payment failed but you still charged my card",Billing,4
+"Hello, Could you add a calendar view for settings.",Feature Request,50
+The app is unresponsive after the latest update,Technical Issue,29
+a recurring task option in settings would save us time,Feature Request,59
+I've asked for a manager three times with no response,Complaint,115
+Is there an early termination fee for Enterprise,Cancellation,101
+I was charged twice for my Pro subscription this month,Billing,0
+"Hey team, Nobody explained why my account was charged incorrectly",Complaint,113
+I need a refund for the Basic plan I cancelled,Billing,3
+Can I try the Starter plan before purchasing,General Inquiry,84
+any plans to support inbox on the mobile app,Feature Request,49
+search results are missing items that clearly exist,Bug Report,66
+can you build an export to Excel option for analytics,Feature Request,46
+it'd be useful to set reminders inside dashboard,Feature Request,57
+Do you offer annual billing instead of monthly,Billing,8
+How do I get started with analytics,General Inquiry,79
+The page freezes whenever I try to open calendar,Bug Report,25
+"Hello, The app is unresponsive after the latest update",Technical Issue,29
+nobody explained why my account was charged incorrectly,Complaint,113
+Sorting by date on dashboard is completely out of order,Bug Report,71
+What integrations do you support besides Slack asap,General Inquiry,80
+"Hello, i was billed after I already cancelled my account",Billing,9
+i'm considering switching providers due to these issues,Complaint,112
+I tried to cancel but the button doesn't work,Cancellation,95
+the page freezes whenever I try to open integrations,Technical Issue,25
+My account was suspended and I don't know why,Account Access,34
+There's a duplicate transaction on my statement for Starter,Billing,10
+"i can't connect the calendar integration, it times out",Technical Issue,19
+"Hi, Do you have a public status page for uptime.",General Inquiry,87
+Uploads keep failing halfway through on reports,Technical Issue,18
+I need to transfer account ownership to a colleague,Account Access,39
+I'm shocked at how this issue was handled,Complaint,117
+"My card on file expired, how do I update payment info",Billing,12
+I want to downgrade from Basic and stop auto-renew thanks,Cancellation,97
+Can you integrate with Slack for update settings notifications,Feature Request,53
+The app is unresponsive after the latest update thanks,Technical Issue,29
+What security certifications does your platform have,General Inquiry,88
+this is unacceptable for a paying Team customer,Complaint,116
+"Hi, I was promised a callback and never received one",Complaint,110
+"I regret upgrading to Basic, the experience has been terrible asap",Complaint,119
+I can't get past the login screen on any device,Account Access,41
+The support experience has been disappointing overall,Complaint,114
+What integrations do you support besides Slack,General Inquiry,80
+Sorting by date on reports is completely out of order,Bug Report,71
+Please add multi-language support for settings,Feature Request,52
+i'd like to cancel but keep my data for 30 days,Cancellation,100
+I'd like to cancel but keep my data for 30 days,Cancellation,100
+I upgraded to Team but I'm still being charged teh old rate,Billing,13
+The magic link email for login never arrives,Bug Report,43
+What integrations do you support besides Slack,Billing,80
+Do you offer training sessions for new teams,General Inquiry,82
+Nothing happens when I click save on the analytics screen,Technical Issue,28
+What happens to my data if I downgrade from Team,General Inquiry,83
+The magic link email for login never arrives please help,Account Access,43
+How do I get started with reports,General Inquiry,79
+notifications aren't showing up on my mobile app,Technical Issue,24
+i'm considering switching providers due to tehse issues please help,Complaint,112
+I can't verify my email address to activate my account,Account Access,37
+This is unacceptable for a paying Enterprise customer,Complaint,116
+I'm considering switching providers due to tehse issues,Complaint,112
+This is the third time I've contacted support about update settings,Complaint,106
+Can I get a receipt for tax purposes for this invoice,Billing,11
+how do I get started with analytics,General Inquiry,79
+"Hey team, the magic link email for login never arrives",Account Access,43
+The API is returning timeout errors on generate a report asap,Technical Issue,22
+The service quality has gotten worse over the last 1234 months please help,Complaint,109
+I need a refund for teh Enterprise plan I cancelled please help,Billing,3
+"Hi, Your team keeps closing my ticket without fixing anything",Complaint,118
+Uploads keep failing halfway through on dashboard please help,Technical Issue,18
+"Hello, duplicate entries keep appearing after I invite teammates",Bug Report,63
+i keep getting logged out randomly while using integrations,Technical Issue,26
+Would you consider a public API for calendar thanks,Feature Request,55
+clicking save on calendar doesn't actually save thanks,Bug Report,65
+Could you add a calendar view for inbox,Feature Request,50
+please send me a copy of last month's invoice,Billing,5
+The site is extremely slow when loading reports,Technical Issue,20
+Sync between devices stopped working for analytics,Technical Issue,23
+Would you consider a public API for integrations,Feature Request,55
+Could you add a calendar view for billing,Feature Request,50
+Filters on billing reset every time I refresh,Bug Report,61
+The discount code didn't apply to my Enterprise purchase,Billing,7
+Uploaded files show the wrong file size on inbox,Bug Report,72
+Would you consider a public API for analytics,Feature Request,55
+Is there a discount for nonprofits or students.,General Inquiry,86
+I can't get past teh login screen on any device,Account Access,41
+I need to shut down our whole team's Basic account,Cancellation,103
+"The dashboard won't load, it's stuck on a spinner",Technical Issue,17
+Do you offer annual billing instead of monthly,Cancellation,8
+"the dashboard won't load, it's stuck on a spinner",Technical Issue,17
+I was billed after I already cancelled my account please help,Billing,9
+It says my account doesn't exist but I've had it for years,Account Access,40
+The totals on integrations don't match what I entered,Cancellation,60
+The chart on integrations shows the wrong numbers,Bug Report,64
+Would you consider a public API for calendar,Feature Request,55
+what's your cancellation policy for Basic,Cancellation,94
+How do I close my account permanently,Cancellation,91
+"Hey team, Why does my invoice include a charge I don't recognize",Billing,14
+"Hey team, There's a duplicate transaction on my statement for Pro",Billing,10
+"Hey team, any plans to support reports on the mobile app",Feature Request,49
+the totals on settings don't match what I entered.,Bug Report,60
+Filters on analytics reset every time I refresh,Bug Report,61
+Uploads keep failing halfway through on analytics,Technical Issue,18
+Sorting by date on dashboard is completely out of order,Bug Report,71
+Can you support single sign-on for enterprise customers please help,Feature Request,58
+I'm getting a 500 error when I try to invite teammates,Technical Issue,16
+I'm extremely frustrated with the constant reports outages,Complaint,105
+please add the ability to duplicate items in inbox asap,Feature Request,56
+the app is unresponsive after the latest update,Technical Issue,29
+"Hello, This bug has been open for weeks with no update",Complaint,111
+I was charged twice for my Pro subscription this month,Billing,0
+I can't verify my email address to activate my account,Account Access,37
+"Hi, editing a record in calendar silently deletes anotehr field please help",Bug Report,74
+How do I cancel before the next billing cycle,Cancellation,99
+"Hi, What security certifications does your platform have",General Inquiry,88
+I was charged twice for my Starter subscription this month,Billing,0
+Can you support single sign-on for enterprise customers,Feature Request,58
+"Hey team, I was promised a callback and never received one",Complaint,110
+Is there a discount for nonprofits or students,General Inquiry,86
+A recurring task option in billing would save us time,Feature Request,59
+The page freezes whenever I try to open calendar,Technical Issue,25
+Notifications aren't showing up on my mobile app,Technical Issue,24
+The inbox page shows a broken layout on Safari,Bug Report,67
+what's the difference between the Team and enterprise plan,Billing,75
+Please stop auto-renewal on my subscription right away,Cancellation,104
+"Hey team, Nothing happens when I click save on the billing screen",Technical Issue,28
+Is there a discount for nonprofits or students,General Inquiry,86
+"Hi, please add multi-language support for calendar",Feature Request,52
+"Hi, i'm considering switching providers due to these issues",Complaint,112
+I'm considering switching providers due to these issues,Complaint,112
+Permissions aren't respected after I invite teammates,Bug Report,69
+the service quality has gotten worse over the last 1234 months,Complaint,109
+"Hey team, Can I export my data if I switch providers later",General Inquiry,89
+can you integrate with Slack for update settings notifications,Feature Request,53
+I'm being asked to verify identity but the verification fails,Account Access,44
+"Hello, The service quality has gotten worse over teh last 9012 months",Complaint,109
+"Hello, Someone else may have access to my account",Account Access,36
+can you explain teh charge on my credit card ending 3456.,Billing,2
+Uploads keep failing halfway through on inbox,Technical Issue,18
+How many users can I add on the Starter plan.,General Inquiry,85
+I'm being asked to verify identity but teh verification fails,Account Access,44
+"Hello, the dashboard won't load, it's stuck on a spinner",Technical Issue,17
+What's the difference between the Basic and enterprise plan,Bug Report,75
+please stop auto-renewal on my subscription right away please help,Cancellation,104
+Why is my invoice $99 higher than last month,Billing,1
+The two-factor autehntication code never arrives,Account Access,32
+i forgot the email I used to sign up,Billing,33
+could you add a calendar view for analytics,Feature Request,50
+"Hello, i can't log in, it says my password is incorrect",Account Access,30
+"Hello, My payment failed but you still charged my card",Billing,4
+The settings module throws an error every time I refresh,Technical Issue,27
+"Hi, The discount code didn't apply to my Pro purchase",Billing,7
+this is the third time I've contacted support about set up automation,Technical Issue,106
+Do you have a public status page for uptime,General Inquiry,87
+Nothing happens when I click save on the calendar screen,Technical Issue,28
+I want to cancel my Basic subscription immediately,Cancellation,90
+"Hey team, The API is returning timeout errors on export data",Technical Issue,22
+"Hello, I need to reset my password but the reset link expired",Account Access,35
+Do you offer training sessions for new teams,General Inquiry,82
+I want to cancel my Starter subscription immediately,Cancellation,90
+uploaded files show the wrong file size on dashboard,Bug Report,72
+i need to reset my password but teh reset link expired,Account Access,35
+filters on calendar reset every time I refresh,Bug Report,61
+Can you integrate with Slack for export data notifications,Feature Request,53
+I'm shocked at how this issue was handled,Complaint,117
+can you explain the charge on my credit card ending 1234,Billing,2
+what security certifications does your platform have asap,General Inquiry,88
+Can you build an export to Excel option for billing,Feature Request,46
+Please cancel my subscription and delete my data,Cancellation,92
+"Hey team, I've asked for a manager three times with no response",Complaint,115
+The pagination on calendar skips every otehr page,Bug Report,70
+Permissions aren't respected after I generate a report,Bug Report,69
+Please confirm my cancellation was processed,Cancellation,98
+"I can't connect the dashboard integration, it times out",Technical Issue,19
+This bug has been open for weeks with no update,Complaint,111
+I need to transfer account ownership to a colleague,Account Access,39
+Please confirm my cancellation was processed,Cancellation,98
+My payment failed but you still charged my card,Billing,4
+I want to update my billing address and card details thanks,Billing,6
+Nothing happens when I click save on the billing screen,Technical Issue,28
+The service quality has gotten worse over the last 9012 months,Complaint,109
+"My card on file expired, how do I update payment info thanks",Billing,12
+"Hi, Can I pause my subscription instead of cancelling",Cancellation,96
+Please add multi-language support for dashboard,Feature Request,52
+"Hey team, I can't get past teh login screen on any device",Account Access,41
+What security certifications does your platform have,General Inquiry,88
+How do I cancel before the next billing cycle,Cancellation,99
+The discount code didn't apply to my Pro purchase,Billing,7
+My SSO login through Google isn't working anymore,Account Access,38
+editing a record in reports silently deletes another field,Bug Report,74
+It says my account doesn't exist but I've had it for years,General Inquiry,40
+I was promised a callback and never received one,Complaint,110
+"Hello, Please cancel my subscription and delete my data",Cancellation,92
+please send me a copy of last month's invoice,Billing,5
+"cancel my renewal, I don't want to be charged again",Cancellation,102
+i can't verify my email address to activate my account,Account Access,37
+I want to downgrade from Pro and stop auto-renew,Cancellation,97
+"The dashboard won't load, it's stuck on a spinner",Technical Issue,17
+The support experience has been disappointing overall,Complaint,114
+"Hey team, sorting by date on billing is completely out of order please help",Bug Report,71
+Is there a mobile app available for dashboard thanks,General Inquiry,78
+my SSO login through Google isn't working anymore please help,Account Access,38
+I forgot the email I used to sign up,Account Access,33
+"Hi, i can't verify my email address to activate my account",Account Access,37
+This is teh third time I've contacted support about export data.,Complaint,106
+Please consider adding keyboard shortcuts for connect an integration,Feature Request,47
+Search results are missing items that clearly exist,Bug Report,66
+it would help to have custom fields in integrations,Cancellation,51
+How do I close my account permanently,Account Access,91
+The support experience has been disappointing overall,Complaint,114
+I'm very unhappy with how long this issue has taken,Complaint,108
+Do you offer annual billing instead of monthly,Billing,8
+The service quality has gotten worse over the last 5678 months,Complaint,109
+Any plans to support analytics on the mobile app,Feature Request,49
+I want to cancel my Basic subscription immediately,Cancellation,90
+The magic link email for login never arrives please help,Account Access,43
+How do I get started with calendar.,General Inquiry,79
+My session keeps expiring immediately after I sign in,Account Access,42
+I tried to cancel but the button doesn't work,Cancellation,95
+The discount code didn't apply to my Starter purchase,Billing,7
+I was promised a callback and never received one,Complaint,110
+Getting a blank white screen after logging in,Technical Issue,21
+Can I export my data if I switch providers later,General Inquiry,89
+I'm locked out of my account after too many attempts asap,Account Access,31
+The pagination on integrations skips every other page,Bug Report,70
+"Hey team, Can I get a receipt for tax purposes for this invoice",Billing,11
+This is unacceptable for a paying Pro customer,Complaint,116
+I want to update my billing address and card details,Billing,6
+my SSO login through Google isn't working anymore,Account Access,38
+Can you support single sign-on for enterprise customers.,Feature Request,58
+Filters on settings reset every time I refresh asap,Bug Report,61
+"I can't log in, it says my password is incorrect",Account Access,30
+"Hey team, Please cancel my subscription and delete my data",Cancellation,92
+I upgraded to Enterprise but I'm still being charged the old rate please help,Billing,13
+uploaded files show the wrong file size on integrations,Bug Report,72
+"Hi, The support experience has been disappointing overall.",Complaint,114
+My session keeps expiring immediately after I sign in,Account Access,42
+Dates are displaying one day off on calendar,Billing,62
+this bug has been open for weeks with no update,Complaint,111
+Your team keeps closing my ticket without fixing anything,Complaint,118
+The chart on calendar shows the wrong numbers,Bug Report,64
+I need a refund for the Team plan I cancelled,Billing,3
+It'd be useful to set reminders inside dashboard,Feature Request,57
+The site is extremely slow when loading settings asap,Technical Issue,20
+do you have documentation on how to update settings,General Inquiry,76
+"Hello, I'm very unhappy with how long this issue has taken",Complaint,108
+how do I get started with billing,General Inquiry,79
+What happens to my data if I downgrade from Pro,Cancellation,83
+The totals on reports don't match what I entered,Feature Request,60
+Editing a record in billing silently deletes anotehr field asap,Bug Report,74
+What's the difference between the Starter and enterprise plan,General Inquiry,75
+Your support team never responded to my last ticket,Complaint,107
+The discount code didn't apply to my Basic purchase,Billing,7
+"I can't connect the settings integration, it times out",Technical Issue,19
+"I regret upgrading to Starter, the experience has been terrible",Complaint,119
+I can't get past the login screen on any device.,Account Access,41
+Do you have a public status page for uptime,General Inquiry,87
+I'm extremely frustrated with the constant inbox outages,Complaint,105
+"Hello, I need a refund for the Basic plan I cancelled",Billing,3
+What security certifications does your platform have asap,General Inquiry,88
+What integrations do you support besides Slack,General Inquiry,80
+Can I try the Enterprise plan before purchasing,General Inquiry,84
+The confirmation email shows someone else's details,Bug Report,73
+why does my invoice include a charge I don't recognize asap,Billing,14
+Can I pause my subscription instead of cancelling,Cancellation,96
+it says my account doesn't exist but I've had it for years,Account Access,40
+Is there a mobile app available for settings,Billing,78
+Can I pause my subscription instead of cancelling,Cancellation,96
+Please add multi-language support for inbox,Feature Request,52
+I'd love a bulk edit option in calendar,Feature Request,48
+"Cancel my renewal, I don't want to be charged again",Cancellation,102
+Can I get a receipt for tax purposes for this invoice,Billing,11
+"Hey team, The page freezes whenever I try to open inbox",Technical Issue,25
+"Hi, Can you explain the charge on my credit card ending 1234",Billing,2
+"Hey team, a dark theme and font size settings would be nice",Feature Request,54
+please confirm my cancellation was processed,Cancellation,98
+Notifications aren't showing up on my mobile app,Technical Issue,24
+Please confirm my cancellation was processed,Cancellation,98
+"Hey team, my payment failed but you still charged my card",Cancellation,4
+It would help to have custom fields in calendar thanks,Feature Request,51
+I'm getting a 500 error when I try to set up automation,Technical Issue,16
+The app keeps crashing every time I open the analytics page,Technical Issue,15
+Can I pause my subscription instead of cancelling,Cancellation,96
+"I can't connect the integrations integration, it times out",Technical Issue,19
+Notifications aren't showing up on my mobile app,Technical Issue,24
+What's your cancellation policy for Team,Cancellation,94
+I want to cancel my Team subscription immediately,Cancellation,90
+"Hey team, i upgraded to Starter but I'm still being charged the old rate",Billing,13
+The totals on billing don't match what I entered,Bug Report,60
+"Hey team, cancel my renewal, I don't want to be charged again",Cancellation,102
+What's your cancellation policy for Pro,Cancellation,94
+The integrations page shows a broken layout on Safari.,Bug Report,67
+"Hello, i forgot the email I used to sign up",Account Access,33
+Why does my invoice include a charge I don't recognize,Billing,14
+I need to reset my password but the reset link expired,Account Access,35
+How do I cancel before the next billing cycle,Cancellation,99
+sync between devices stopped working for settings,Technical Issue,23
+Is there an early termination fee for Basic,Cancellation,101
+"I can't connect the settings integration, it times out",Technical Issue,19
+I'd like to cancel but keep my data for 30 days asap,Cancellation,100
+How do I close my account permanently,Cancellation,91
+there's a duplicate transaction on my statement for Basic,Billing,10
+"Hello, Dates are displaying one day off on dashboard",Bug Report,62
+I tried to cancel but the button doesn't work,Cancellation,95
+I can't verify my email address to activate my account,Account Access,37
+Please stop auto-renewal on my subscription right away,Cancellation,104
+the confirmation email shows someone else's details,Bug Report,73
+Why is my invoice $12 higher than last month,Billing,1
+"Hello, A dark theme and font size settings would be nice",Feature Request,54
+"Hi, the magic link email for login never arrives",Account Access,43
+I want to update my billing address and card details thanks,Billing,6
+Your support team never responded to my last ticket thanks,Complaint,107
+"Hey team, Why is my invoice $149 higher than last month",Billing,1
+the chart on settings shows the wrong numbers asap,Bug Report,64
+I'm being asked to verify identity but the verification fails.,Account Access,44
+Do you have documentation on how to update settings,General Inquiry,76
+please cancel my subscription and delete my data,Cancellation,92
+can you explain the charge on my credit card ending 1234 thanks,Billing,2
+I upgraded to Enterprise but I'm still being charged the old rate thanks,Account Access,13
+"Hi, How do I cancel before the next billing cycle",Cancellation,99
+i'm getting a 500 error when I try to generate a report,Technical Issue,16
+what's your cancellation policy for Starter,Cancellation,94
+The chart on reports shows teh wrong numbers,Bug Report,64
+"Hi, this is unacceptable for a paying Basic customer",Complaint,116
+"Hey team, i can't get past the login screen on any device",Account Access,41
+"I no longer need the Enterprise plan, cancel it please",Cancellation,93
+"cancel my renewal, I don't want to be charged again",Cancellation,102
+i'm extremely frustrated with the constant billing outages,Complaint,105
+I'm shocked at how this issue was handled,Complaint,117
+please cancel my subscription and delete my data,Cancellation,92
+The app keeps crashing every time I open teh calendar page.,Technical Issue,15
+my account was suspended and I don't know why,Account Access,34
+Filters on inbox reset every time I refresh,Bug Report,61
+nobody explained why my account was charged incorrectly,Complaint,113
+the site is extremely slow when loading analytics,Technical Issue,20
+My payment failed but you still charged my card,Billing,4
+My session keeps expiring immediately after I sign in,Account Access,42
+Can you integrate with Slack for connect an integration notifications,Feature Request,53
+Your support team never responded to my last ticket,Complaint,107
+what happens to my data if I downgrade from Pro.,General Inquiry,83
+Please send me a copy of last month's invoice,Billing,5
+Someone else may have access to my account,Account Access,36
+How many users can I add on the Basic plan,General Inquiry,85
+Why does my invoice include a charge I don't recognize,Billing,14
+The page freezes whenever I try to open integrations thanks,Technical Issue,25
+This is the third time I've contacted support about set up automation,Complaint,106
+Is tehre a mobile app available for analytics,General Inquiry,78
+is there an early termination fee for Team,Cancellation,101
+Is there a mobile app available for settings,Feature Request,78
+The service quality has gotten worse over the last 9012 months,Complaint,109
+Nobody explained why my account was charged incorrectly,General Inquiry,113
+Editing a record in inbox silently deletes another field,Bug Report,74
+I want to cancel my Team subscription immediately please help,Cancellation,90
+I upgraded to Starter but I'm still being charged the old rate,Billing,13
+I need to shut down our whole team's Basic account,Cancellation,103
+I'm shocked at how this issue was handled,Complaint,117
+Sync between devices stopped working for calendar,Technical Issue,23
+"Hello, Can I export my data if I switch providers later",General Inquiry,89
+can you build an export to Excel option for billing,Feature Request,46
+"Hey team, where can I find your API documentation",General Inquiry,81
+Please consider adding keyboard shortcuts for generate a report,Feature Request,47
+"Hey team, Could you add a calendar view for dashboard thanks",Feature Request,50
+The totals on integrations don't match what I entered asap,Bug Report,60
+"Hello, please confirm my cancellation was processed",Cancellation,98
+"Hey team, the two-factor authentication code never arrives",Account Access,32
+please cancel my subscription and delete my data,Cancellation,92
+How many users can I add on the Enterprise plan.,General Inquiry,85
+I'm extremely frustrated with the constant calendar outages.,Complaint,105
+"Hi, I want to downgrade from Enterprise and stop auto-renew",Cancellation,97
+Please add multi-language support for inbox,Feature Request,52
+Is there an early termination fee for Pro please help,Cancellation,101
+I'm extremely frustrated with the constant settings outages,Complaint,105
+I'm considering switching providers due to these issues thanks,Complaint,112
+"Hello, Do you have a public status page for uptime",General Inquiry,87
+the page freezes whenever I try to open dashboard,Technical Issue,25
+dates are displaying one day off on settings,Bug Report,62
+would you consider a public API for inbox,Feature Request,55
+"My card on file expired, how do I update payment info",Billing,12
+"i no longer need the Starter plan, cancel it please",Cancellation,93
+it would be great if you added dark mode to settings,Feature Request,45
+It would help to have custom fields in inbox,Feature Request,51
+sync between devices stopped working for dashboard,Technical Issue,23
+"Hi, I'm being asked to verify identity but the verification fails",Account Access,44
+The support experience has been disappointing overall,Complaint,114
+i upgraded to Team but I'm still being charged the old rate,Billing,13
+How do I close my account permanently,Cancellation,91
+This bug has been open for weeks with no update asap,Complaint,111
+My session keeps expiring immediately after I sign in,Account Access,42
+Can you support single sign-on for enterprise customers,Feature Request,58
+Is there a mobile app available for billing,General Inquiry,78
+I was charged twice for my Team subscription this month,Billing,0
+it would be great if you added dark mode to analytics,Feature Request,45
+Do you have a public status page for uptime thanks,General Inquiry,87
+dates are displaying one day off on settings,Bug Report,62
+How do I get started with reports,Technical Issue,79
+A recurring task option in calendar would save us time,Feature Request,59
+My payment failed but you still charged my card,Billing,4
+is there a discount for nonprofits or students,General Inquiry,86
+"Cancel my renewal, I don't want to be charged again",Cancellation,102
+teh dashboard module throws an error every time I refresh,Technical Issue,27
+your team keeps closing my ticket without fixing anything,Complaint,118
+Uploaded files show teh wrong file size on integrations,Bug Report,72
+I was charged twice for my Enterprise subscription this month,Billing,0
+the billing module throws an error every time I refresh,Technical Issue,27
+"Hello, I forgot the email I used to sign up",Account Access,33
+I was promised a callback and never received one,Complaint,110
+Filters on reports reset every time I refresh,Feature Request,61
+Your support team never responded to my last ticket,Complaint,107
+"Hello, I can't verify my email address to activate my account",Feature Request,37
+I've asked for a manager three times with no response,Complaint,115
+Permissions aren't respected after I invite teammates asap,Bug Report,69
+How do I close my account permanently,Cancellation,91
+The magic link email for login never arrives,Feature Request,43
+Why does my invoice include a charge I don't recognize,Billing,14
+"Hi, Please consider adding keyboard shortcuts for set up automation",Feature Request,47
+i tried to cancel but the button doesn't work thanks,Cancellation,95
+I'd like to cancel but keep my data for 30 days,Cancellation,100
+Duplicate entries keep appearing after I connect an integration,Bug Report,63
+i'm extremely frustrated with the constant dashboard outages,Complaint,105
+I want to update my billing address and card details,Billing,6
+It would be great if you added dark mode to analytics thanks,Feature Request,45
+clicking save on calendar doesn't actually save,Bug Report,65
+"the dashboard won't load, it's stuck on a spinner",Technical Issue,17
+Can you build an export to Excel option for analytics,Feature Request,46
+I'm extremely frustrated with the constant calendar outages,Complaint,105
+I want to downgrade from Starter and stop auto-renew,Cancellation,97
+Nothing happens when I click save on the reports screen please help,Technical Issue,28
+The calendar page shows a broken layout on Safari asap,Bug Report,67
+Getting a blank white screen after logging in,Technical Issue,21
+It'd be useful to set reminders inside settings,Feature Request,57
+"Hi, What are your support hours for Basic customers",General Inquiry,77
+Please send me a copy of last month's invoice asap,Billing,5
+"I no longer need the Basic plan, cancel it please",Cancellation,93
+The integrations page shows a broken layout on Safari.,Bug Report,67
+Can I try teh Team plan before purchasing,Account Access,84
+I'm locked out of my account after too many attempts please help,Account Access,31
+What's your cancellation policy for Basic,Cancellation,94
+export files from settings are corrupted,Bug Report,68
+"Hello, Please stop auto-renewal on my subscription right away",Cancellation,104
+i was charged twice for my Starter subscription this month,Billing,0
+"Hi, Notifications aren't showing up on my mobile app",Technical Issue,24
+"Hello, Is there a mobile app available for calendar",General Inquiry,78
+Why is my invoice $29 higher than last month asap,Billing,1
+Your team keeps closing my ticket without fixing anything,Complaint,118
+I was promised a callback and never received one,Complaint,110
+Export files from settings are corrupted,Bug Report,68
+Clicking save on reports doesn't actually save asap,Bug Report,65
+"Hello, duplicate entries keep appearing after I set up automation",Bug Report,63
+filters on calendar reset every time I refresh,Bug Report,61
+"Hi, The dashboard won't load, it's stuck on a spinner",Technical Issue,17
+Clicking save on billing doesn't actually save,General Inquiry,65
+is tehre a discount for nonprofits or students,General Inquiry,86
+A dark theme and font size settings would be nice,Feature Request,54
+"Hi, please confirm my cancellation was processed",Cancellation,98
+Duplicate entries keep appearing after I update settings,Bug Report,63
+the pagination on dashboard skips every other page,Bug Report,70
+Someone else may have access to my account,Account Access,36
+I'm considering switching providers due to these issues,Complaint,112
+the discount code didn't apply to my Team purchase,Billing,7
+the confirmation email shows someone else's details,Bug Report,73
+Getting a blank white screen after logging in,Technical Issue,21
+Can I get a receipt for tax purposes for this invoice,Billing,11
+"I can't log in, it says my password is incorrect",Account Access,30
+"Hi, i was billed after I already cancelled my account",Billing,9
+There's a duplicate transaction on my statement for Starter,Billing,10
+where can I find your API documentation,General Inquiry,81
+Can I get a receipt for tax purposes for this invoice,Billing,11
+The service quality has gotten worse over the last 5678 months,Complaint,109
+"Hi, How do I cancel before the next billing cycle",Cancellation,99
+can I export my data if I switch providers later,General Inquiry,89
+"Hello, Nobody explained why my account was charged incorrectly",Complaint,113
+where can I find your API documentation,General Inquiry,81
+I need to transfer account ownership to a colleague,Account Access,39
+The app is unresponsive after the latest update,Technical Issue,29
+Search results are missing items that clearly exist,Bug Report,66
+A dark theme and font size settings would be nice,Feature Request,54
+I need to reset my password but the reset link expired,Account Access,35
+Someone else may have access to my account,Account Access,36
+the chart on integrations shows the wrong numbers thanks,Bug Report,64
+A recurring task option in inbox would save us time,Feature Request,59
+It would be great if you added dark mode to reports,Feature Request,45
+Please add the ability to duplicate items in dashboard,Feature Request,56
+sync between devices stopped working for inbox,Technical Issue,23
+"Hey team, Can you support single sign-on for enterprise customers",Feature Request,58
+I want to cancel my Enterprise subscription immediately,Cancellation,90
+Can you integrate with Slack for export data notifications,Feature Request,53
+What are your support hours for Starter customers,General Inquiry,77
+"Hey team, What's your cancellation policy for Team",Cancellation,94
+"Hello, I'm locked out of my account after too many attempts",Account Access,31
+I want to cancel my Basic subscription immediately,Cancellation,90
+Please consider adding keyboard shortcuts for connect an integration,Feature Request,47
+Where can I find your API documentation,General Inquiry,81
+I want to update my billing address and card details,Technical Issue,6
+My account was suspended and I don't know why,Account Access,34
+uploaded files show the wrong file size on integrations,Bug Report,72
+i want to downgrade from Starter and stop auto-renew,Cancellation,97
+I'm shocked at how this issue was handled,Complaint,117
+I'm getting a 500 error when I try to connect an integration,Feature Request,16
+"Hey team, cancel my renewal, I don't want to be charged again",Cancellation,102
+"i can't connect teh billing integration, it times out",Feature Request,19
+this is unacceptable for a paying Team customer please help,Complaint,116
+clicking save on billing doesn't actually save,Bug Report,65
+Do you have a public status page for uptime,General Inquiry,87
+"Hey team, why is my invoice $99 higher than last month",Billing,1
+I forgot the email I used to sign up,Account Access,33
+i'm getting a 500 error when I try to invite teammates thanks,Technical Issue,16
+What's the difference between the Team and enterprise plan,General Inquiry,75
+Filters on integrations reset every time I refresh,Bug Report,61
+It would help to have custom fields in integrations thanks,Feature Request,51
+Do you have documentation on how to invite teammates,General Inquiry,76
+I tried to cancel but teh button doesn't work thanks,Cancellation,95
+I'd like to cancel but keep my data for 30 days,Cancellation,100
+is there a discount for nonprofits or students,General Inquiry,86
+I'm being asked to verify identity but the verification fails,Feature Request,44
+I've asked for a manager three times with no response please help,Complaint,115
+Any plans to support reports on the mobile app,Feature Request,49
+"Hey team, It says my account doesn't exist but I've had it for years",Account Access,40
+getting a blank white screen after logging in,Technical Issue,21
+i want to update my billing address and card details please help,Billing,6
+"Hey team, i'm very unhappy with how long this issue has taken",Complaint,108
+"Hello, what are your support hours for Enterprise customers",General Inquiry,77
+my account was suspended and I don't know why,Account Access,34
+The pagination on analytics skips every otehr page,Bug Report,70
+Someone else may have access to my account,Account Access,36
+The confirmation email shows someone else's details,Bug Report,73
+your team keeps closing my ticket without fixing anything,Complaint,118
+I'm being asked to verify identity but the verification fails,Account Access,44
+The analytics page shows a broken layout on Safari,Bug Report,67
+"My card on file expired, how do I update payment info",Billing,12
+Dates are displaying one day off on analytics,Bug Report,62
+What's the difference between the Basic and enterprise plan please help,General Inquiry,75
+i need to transfer account ownership to a colleague please help,Account Access,39
+"i no longer need the Team plan, cancel it please",Cancellation,93
+The billing page shows a broken layout on Safari,Bug Report,67
+The API is returning timeout errors on update settings,Technical Issue,22
+The app keeps crashing every time I open the reports page,Technical Issue,15
+i upgraded to Team but I'm still being charged the old rate,Billing,13
+I'd love a bulk edit option in settings,Feature Request,48
+Nothing happens when I click save on teh inbox screen,Technical Issue,28
+i'd love a bulk edit option in dashboard,Feature Request,48
+"My card on file expired, how do I update payment info",Billing,12
+"Hi, why is my invoice $29 higher than last month",Billing,1
+I need to reset my password but the reset link expired,Account Access,35
+Nothing happens when I click save on the integrations screen,Technical Issue,28
+Uploads keep failing halfway through on dashboard,Technical Issue,18
+My account was suspended and I don't know why asap,Account Access,34
+"Hello, my session keeps expiring immediately after I sign in",Account Access,42
+Can you build an export to Excel option for inbox,Feature Request,46
+Can I get a receipt for tax purposes for this invoice,Billing,11
+where can I find your API documentation,Complaint,81
+My session keeps expiring immediately after I sign in,Account Access,42
+Do you offer annual billing instead of monthly,Billing,8
+Please add multi-language support for settings,Feature Request,52
+"Hello, The pagination on settings skips every other page",Bug Report,70
+do you have a public status page for uptime,General Inquiry,87
+why does my invoice include a charge I don't recognize,Billing,14
+"Hey team, Export files from inbox are corrupted",Bug Report,68
+"Hi, I'm considering switching providers due to these issues",Complaint,112
+My account was suspended and I don't know why please help,Account Access,34
+I was billed after I already cancelled my account,Billing,9
+i'm locked out of my account after too many attempts,Account Access,31
+What are your support hours for Team customers,General Inquiry,77
+i need a refund for teh Basic plan I cancelled,Billing,3
+I'd love a bulk edit option in integrations.,Complaint,48
+would you consider a public API for reports,Feature Request,55
+I'd like to cancel but keep my data for 30 days,Cancellation,100
+It says my account doesn't exist but I've had it for years,Account Access,40
+"I can't connect the calendar integration, it times out please help",Technical Issue,19
+Can you integrate with Slack for export data notifications,Feature Request,53
+"Hi, I'm very unhappy with how long this issue has taken",Complaint,108
+What are your support hours for Team customers,General Inquiry,77
+clicking save on inbox doesn't actually save,Bug Report,65
+Do you offer training sessions for new teams,General Inquiry,82
+This bug has been open for weeks with no update,Complaint,111
+"Hey team, Uploaded files show the wrong file size on reports",Bug Report,72
+Please consider adding keyboard shortcuts for update settings,Feature Request,47
+How do I close my account permanently,Cancellation,91
+Notifications aren't showing up on my mobile app,Technical Issue,24
+do you offer training sessions for new teams,General Inquiry,82
+Can I export my data if I switch providers later,General Inquiry,89
+Where can I find your API documentation thanks,General Inquiry,81
+My account was suspended and I don't know why,Account Access,34
+"I no longer need the Enterprise plan, cancel it please",Cancellation,93
+What integrations do you support besides Slack,General Inquiry,80
+I was billed after I already cancelled my account,Billing,9
+I keep getting logged out randomly while using dashboard,Technical Issue,26
+"Hello, Export files from dashboard are corrupted",Bug Report,68
+uploads keep failing halfway through on inbox,Technical Issue,18
+"Hey team, the service quality has gotten worse over the last 9012 months",Complaint,109
+A dark theme and font size settings would be nice,Feature Request,54
+is there a discount for nonprofits or students,General Inquiry,86
+"Hey team, The two-factor authentication code never arrives",Account Access,32
+"Hello, There's a duplicate transaction on my statement for Enterprise",Billing,10
+"Hi, Can you support single sign-on for enterprise customers",Feature Request,58
+It would help to have custom fields in reports please help,Feature Request,51
+the site is extremely slow when loading settings,Technical Issue,20
+what happens to my data if I downgrade from Pro,General Inquiry,83
+I'd love a bulk edit option in analytics thanks,Feature Request,48
+i forgot the email I used to sign up,Account Access,33
+the two-factor authentication code never arrives,Account Access,32
+The pagination on inbox skips every other page,General Inquiry,70
+I was billed after I already cancelled my account,Billing,9
+A dark theme and font size settings would be nice,Feature Request,54
+How do I get started with reports please help,General Inquiry,79
+"I no longer need the Starter plan, cancel it please",Cancellation,93
+nobody explained why my account was charged incorrectly thanks,Complaint,113
+"Hi, I need to reset my password but the reset link expired",Account Access,35
+It would be great if you added dark mode to analytics,Feature Request,45
+What's the difference between the Basic and enterprise plan,General Inquiry,75
+the settings module throws an error every time I refresh,Technical Issue,27
+The pagination on integrations skips every otehr page,Bug Report,70
+What are your support hours for Starter customers,General Inquiry,77
+"The dashboard won't load, it's stuck on a spinner",Technical Issue,17
+The inbox module throws an error every time I refresh,Technical Issue,27
+this is the third time I've contacted support about set up automation asap,Complaint,106
+"Hi, My SSO login through Google isn't working anymore",Account Access,38
+Uploads keep failing halfway through on settings,Technical Issue,18
+Notifications aren't showing up on my mobile app,Technical Issue,24
+my payment failed but you still charged my card,Billing,4
+"I can't log in, it says my password is incorrect",Account Access,30
+"Hey team, Please send me a copy of last month's invoice",Billing,5
+"Hello, please stop auto-renewal on my subscription right away",Cancellation,104
+Can I try the Pro plan before purchasing,General Inquiry,84
+"i regret upgrading to Pro, the experience has been terrible",Complaint,119
+what security certifications does your platform have thanks,General Inquiry,88
+"Hello, i keep getting logged out randomly while using settings",Technical Issue,26
+Clicking save on settings doesn't actually save,Bug Report,65
+This is unacceptable for a paying Basic customer,Complaint,116
+what are your support hours for Basic customers,General Inquiry,77
+It would be great if you added dark mode to analytics,Feature Request,45
+search results are missing items that clearly exist,Bug Report,66
+it says my account doesn't exist but I've had it for years,Account Access,40
+The support experience has been disappointing overall,Feature Request,114
+dates are displaying one day off on calendar,Bug Report,62
+the confirmation email shows someone else's details,Bug Report,73
+"Hey team, The dashboard won't load, it's stuck on a spinner",Technical Issue,17
+Please add the ability to duplicate items in calendar,Cancellation,56
+Export files from reports are corrupted please help,Bug Report,68
+I've asked for a manager three times with no response thanks,Complaint,115
+"Hey team, I can't verify my email address to activate my account",Account Access,37
+I'd like to cancel but keep my data for 30 days,Cancellation,100
+I'm shocked at how this issue was handled,Complaint,117
+please send me a copy of last month's invoice,Billing,5
+"Hello, My SSO login through Google isn't working anymore",Account Access,38
+I'm locked out of my account after too many attempts,Account Access,31
+"Hi, i was charged twice for my Enterprise subscription this month",Billing,0
+Can I try teh Starter plan before purchasing,General Inquiry,84
+a dark theme and font size settings would be nice,Feature Request,54
+"Hello, Getting a blank white screen after logging in",Technical Issue,21
+Permissions aren't respected after I generate a report,Bug Report,69
+Can you build an export to Excel option for integrations,Feature Request,46
+My SSO login through Google isn't working anymore,Account Access,38
+The chart on inbox shows the wrong numbers,Bug Report,64
+This is unacceptable for a paying Team customer please help,Complaint,116
+There's a duplicate transaction on my statement for Team,Billing,10
+My payment failed but you still charged my card,Billing,4
+I've asked for a manager three times with no response,Complaint,115
+I'm very unhappy with how long this issue has taken.,Complaint,108
+The two-factor authentication code never arrives,Account Access,32
+"Hey team, Sorting by date on calendar is completely out of order",Bug Report,71
+"Hi, Can I get a receipt for tax purposes for this invoice",Billing,11
+The site is extremely slow when loading billing please help,Technical Issue,20
+what happens to my data if I downgrade from Team,General Inquiry,83
+I keep getting logged out randomly while using dashboard,Technical Issue,26
+The confirmation email shows someone else's details,Bug Report,73
+I'm getting a 500 error when I try to set up automation,Technical Issue,16
+"Hey team, Please send me a copy of last month's invoice",Billing,5
+The app keeps crashing every time I open teh analytics page please help,Technical Issue,15
+It says my account doesn't exist but I've had it for years,Account Access,40
+"Cancel my renewal, I don't want to be charged again",Cancellation,102
+It'd be useful to set reminders inside settings,Feature Request,57
+sorting by date on analytics is completely out of order,Bug Report,71
+I was charged twice for my Pro subscription this month,Billing,0
+Sync between devices stopped working for dashboard,Technical Issue,23
+What security certifications does your platform have,General Inquiry,88
+do you have documentation on how to set up automation,General Inquiry,76
+"I regret upgrading to Enterprise, the experience has been terrible",Complaint,119
+Sync between devices stopped working for integrations,Technical Issue,23
+The app keeps crashing every time I open the settings page,Technical Issue,15
+The support experience has been disappointing overall,Complaint,114
+Can I try the Team plan before purchasing,General Inquiry,84
+"Hello, I keep getting logged out randomly while using reports",Technical Issue,26
+I've asked for a manager three times with no response,Complaint,115
+Can I pause my subscription instead of cancelling asap,Cancellation,96
+The app keeps crashing every time I open the inbox page,Technical Issue,15
+what happens to my data if I downgrade from Enterprise,General Inquiry,83
+is there an early termination fee for Basic,Cancellation,101
+please stop auto-renewal on my subscription right away,Cancellation,104
+"i regret upgrading to Team, teh experience has been terrible",Complaint,119
+export files from settings are corrupted,Bug Report,68
+Editing a record in analytics silently deletes another field,Bug Report,74
+"Hi, your support team never responded to my last ticket",Complaint,107
+Search results are missing items that clearly exist,Bug Report,66
+"i regret upgrading to Team, the experience has been terrible",Complaint,119
+dates are displaying one day off on reports,Bug Report,62
+The analytics page shows a broken layout on Safari,Bug Report,67
+I need to shut down our whole team's Enterprise account,Cancellation,103
+i'd like to cancel but keep my data for 30 days,Cancellation,100
+Export files from billing are corrupted,Bug Report,68
+please stop auto-renewal on my subscription right away,Cancellation,104
+"Hi, Sorting by date on settings is completely out of order",Bug Report,71
+Could you add a calendar view for settings,Feature Request,50
+Can you explain teh charge on my credit card ending 3456,Billing,2
+Can I export my data if I switch providers later,General Inquiry,89
+please stop auto-renewal on my subscription right away,Cancellation,104
+"Hi, It would help to have custom fields in settings",Feature Request,51
+sync between devices stopped working for analytics,Technical Issue,23
+Export files from reports are corrupted,Bug Report,68
+"Hello, is there an early termination fee for Starter",Cancellation,101
+I was promised a callback and never received one,Complaint,110
+"Hello, this is unacceptable for a paying Pro customer",Complaint,116
+How do I close my account permanently,Cancellation,91
+Do you offer annual billing instead of monthly,Billing,8
+I can't get past the login screen on any device.,Account Access,41
+"My card on file expired, how do I update payment info",Billing,12
+i'm getting a 500 error when I try to invite teammates,Technical Issue,16

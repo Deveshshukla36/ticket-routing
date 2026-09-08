@@ -1,0 +1,38 @@
+﻿{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "100mb"
+      }
+    },
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/$1"
+    }
+  ],
+  "env": {
+    "ENVIRONMENT": "production",
+    "DATABASE_URL": "sqlite:////tmp/tickets.db",
+    "CONFIDENCE_THRESHOLD": "0.60",
+    "DEFAULT_MODEL_VARIANT": "A",
+    "LLM_PROVIDER": "offline"
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_API_URL": ""
+    }
+  }
+}

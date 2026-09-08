@@ -1,0 +1,39 @@
+﻿# Virtual environments (large, not needed for production)
+.venv/
+venv/
+env/
+
+# Python caches
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Node modules (Vercel installs automatically)
+frontend/node_modules/
+
+# Next.js build cache (Vercel builds fresh)
+frontend/.next/
+
+# SQLite DB (ephemeral; we use /tmp in production)
+backend/tickets.db
+
+# Training-only scripts and data (not needed for serving)
+backend/train.py
+backend/train_transformer.py
+backend/data/
+
+# Test suite (not needed in production)
+backend/tests/
+.pytest_cache/
+backend/.pytest_cache/
+
+# Docker files (not needed for Vercel)
+docker-compose.yml
+backend/Dockerfile
+
+# TypeScript build info
+frontend/tsconfig.tsbuildinfo
+
+# Secrets
+.env
+.env.local

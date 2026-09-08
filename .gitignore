@@ -1,0 +1,37 @@
+﻿# Virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pywc
+.mypy_cache/
+
+# Secrets & local config
+.env
+.env.local
+.env.production.local
+
+# Node / frontend
+frontend/node_modules/
+frontend/.next/
+
+# SQLite (ephemeral; Vercel uses /tmp)
+backend/tickets.db
+
+# Test artifacts
+.pytest_cache/
+backend/.pytest_cache/
+
+# Build traces
+*.tsbuildinfo
+
+# IDE / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
