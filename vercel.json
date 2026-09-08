@@ -32,7 +32,8 @@
   },
   "build": {
     "env": {
-      "NEXT_PUBLIC_API_URL": ""
+      "NEXT_PUBLIC_API_URL": "",
+      "NODE_OPTIONS": "--max-old-space-size=4096"
     }
   }
 }
