@@ -36,10 +36,19 @@ const PIE_COLORS = [
 ];
 
 export function IntentDistributionChart({ data }: { data: Record<string, number> }) {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const chartData = Object.entries(data).map(([name, count]) => ({
     name,
     count,
   }));
+
+  if (!mounted) {
+    return <div className="w-full h-72 animate-pulse bg-slate-800/10 dark:bg-slate-800/30 rounded-xl" />;
+  }
 
   if (chartData.length === 0) {
     return (
@@ -88,6 +97,15 @@ export function IntentDistributionChart({ data }: { data: Record<string, number>
 }
 
 export function RoutingPerformanceChart({ data }: { data: { team: string; count: number }[] }) {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="w-full h-72 animate-pulse bg-slate-800/10 dark:bg-slate-800/30 rounded-xl" />;
+  }
+
   if (!data || data.length === 0) {
     return (
       <div className="h-64 flex flex-col items-center justify-center text-slate-400 text-sm">

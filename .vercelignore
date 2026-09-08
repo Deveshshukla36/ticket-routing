@@ -1,4 +1,4 @@
-﻿# Virtual environments (large, not needed for production)
+# Virtual environments (large, not needed for production)
 .venv/
 venv/
 env/
@@ -12,7 +12,9 @@ env/
 frontend/node_modules/
 
 # Next.js build cache (Vercel builds fresh)
+.next/
 frontend/.next/
+**/.next/
 
 # SQLite DB (ephemeral; we use /tmp in production)
 backend/tickets.db
