@@ -1,23 +1,8 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/index.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/$1"
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
     }
   ],
   "env": {
@@ -26,11 +11,5 @@
     "CONFIDENCE_THRESHOLD": "0.60",
     "DEFAULT_MODEL_VARIANT": "A",
     "LLM_PROVIDER": "offline"
-  },
-  "build": {
-    "env": {
-      "NEXT_PUBLIC_API_URL": "",
-      "NODE_OPTIONS": "--max-old-space-size=4096"
-    }
   }
 }
