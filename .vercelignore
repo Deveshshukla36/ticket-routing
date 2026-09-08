@@ -40,3 +40,9 @@ frontend/tsconfig.tsbuildinfo
 # Secrets
 .env
 .env.local
+
+# UV build artifacts
+_uv/
+pyproject.toml
+uv.lock
+.vercel/
