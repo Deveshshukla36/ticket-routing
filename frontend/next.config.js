@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    workerThreads: false,
+    cpus: 1,
+  },
   // Local development: proxy /api/* → FastAPI on port 8000.
   // On Vercel, vercel.json routes /api/* to the Python serverless function
   // before Next.js sees the request, so these rewrites are effectively no-ops
