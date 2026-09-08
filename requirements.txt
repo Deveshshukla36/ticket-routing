@@ -1,7 +1,3 @@
-﻿# Production runtime dependencies for Vercel deployment.
-# torch and transformers are NOT listed here: they are used only by the
-# offline training scripts (train.py / train_transformer.py) which are
-# excluded from deployment via .vercelignore.
 fastapi>=0.110,<1.0
 uvicorn[standard]>=0.29
 pydantic>=2.6
