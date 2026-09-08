@@ -36,3 +36,9 @@ Thumbs.db
 .idea/
 .vscode/
 .vercel
+
+# UV build artifacts
+_uv/
+pyproject.toml
+uv.lock
+.vercel/
