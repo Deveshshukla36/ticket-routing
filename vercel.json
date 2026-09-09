@@ -1,4 +1,18 @@
 {
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/next"
+    },
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.12"
+      }
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -7,7 +21,6 @@
   ],
   "env": {
     "ENVIRONMENT": "production",
-    "DATABASE_URL": "sqlite:////tmp/tickets.db",
     "CONFIDENCE_THRESHOLD": "0.60",
     "DEFAULT_MODEL_VARIANT": "A",
     "LLM_PROVIDER": "offline"

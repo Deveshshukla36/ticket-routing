@@ -1,7 +1,12 @@
-fastapi==0.110.0
-pydantic==2.6.4
-scikit-learn==1.4.2
-joblib==1.3.2
-numpy==1.26.4
-sqlalchemy==2.0.28
-python-dotenv==1.0.1
+# Vercel Python Serverless requirements
+# torch and transformers are intentionally EXCLUDED (too large for Vercel's 250 MB limit).
+# They are only needed for local model training (train_transformer.py).
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+scikit-learn>=1.4
+joblib>=1.3
+numpy>=1.26
+sqlalchemy>=2.0
+psycopg2-binary>=2.9
+python-dotenv>=1.0
