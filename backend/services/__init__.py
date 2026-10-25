@@ -1,6 +1,6 @@
-from .routing_service import smart_routing_engine, SmartRoutingEngine
-from .rag_service import rag_service, RAGAssistantService
-from .ticket_service import ticket_service, TicketService
+from .rag_service import RAGAssistantService, rag_service
+from .routing_service import SmartRoutingEngine, smart_routing_engine
+from .ticket_service import TicketService, ticket_service
 
 __all__ = [
     "smart_routing_engine",

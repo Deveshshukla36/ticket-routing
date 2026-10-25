@@ -1,6 +1,6 @@
-from .classifier import IntentClassifier, get_classifier, ROUTING_TABLE
-from .sentiment import sentiment_analyzer, SentimentAnalyzer
-from .registry import model_registry, ModelRegistry
+from .classifier import ROUTING_TABLE, IntentClassifier, get_classifier
+from .registry import ModelRegistry, model_registry
+from .sentiment import SentimentAnalyzer, sentiment_analyzer
 
 __all__ = [
     "IntentClassifier",

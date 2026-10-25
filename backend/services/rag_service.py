@@ -1,9 +1,19 @@
 import re
-from typing import List, Dict, Any, Optional
-from config import settings
+from typing import List, TypedDict
+
 from schemas.ai import AIResponseRequest, AIResponseResult, KnowledgeArticle
 
-KNOWLEDGE_BASE = [
+
+class KnowledgeEntry(TypedDict):
+    id: str
+    title: str
+    intent: str
+    summary: str
+    suggested_steps: List[str]
+    template: str
+
+
+KNOWLEDGE_BASE: List[KnowledgeEntry] = [
     {
         "id": "kb_account_01",
         "title": "Account Locked Out & Multi-Factor Reset Protocol",

@@ -1,0 +1,108 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  PYTHON_VERSION: "3.11"  # matches .python-version and the Render Python runtime
+  MODEL_BACKEND: sklearn
+
+jobs:
+  lint-and-test:
+    name: Lint, type-check, unit tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      - name: Install dependencies
+        run: pip install -r ../requirements.txt -r ../requirements-dev.txt
+      - name: ruff
+        run: ruff check .
+      - name: mypy
+        run: mypy .
+      - name: pytest (unit + integration; accuracy gates run in their own job)
+        run: pytest -m "not accuracy"
+
+  accuracy-gate:
+    name: Holdout accuracy gate (sklearn)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      - name: Install dependencies
+        run: pip install -r ../requirements.txt -r ../requirements-dev.txt
+      - name: Validate holdout set
+        run: python data/build_holdout.py
+      - name: pytest -m accuracy (sklearn >= 0.90; prints confusion matrices)
+        env:
+          ACCURACY_REPORT_DIR: ${{ github.workspace }}/accuracy-reports
+        run: pytest -m accuracy -k "not roberta"
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: accuracy-reports-sklearn
+          path: accuracy-reports/
+          if-no-files-found: ignore
+
+  roberta-smoke:
+    name: RoBERTa smoke + accuracy gate
+    if: github.ref == 'refs/heads/main' || github.base_ref == 'main'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      MODEL_BACKEND: roberta
+      HF_API_TOKEN: ${{ secrets.HF_API_TOKEN }}
+      HF_MODEL_ID: ${{ vars.HF_MODEL_ID }}
+      HF_ENDPOINT_URL: ${{ vars.HF_ENDPOINT_URL }}
+    steps:
+      - name: Skip notice
+        if: env.HF_API_TOKEN == ''
+        working-directory: .
+        run: |
+          echo "::notice title=RoBERTa smoke skipped::HF_API_TOKEN secret is not set (or unavailable to fork PRs). Add it under Settings > Secrets and variables > Actions, plus an HF_MODEL_ID variable, to enable this job."
+      - uses: actions/checkout@v5
+        if: env.HF_API_TOKEN != ''
+      - uses: actions/setup-python@v6
+        if: env.HF_API_TOKEN != ''
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      - name: Install dependencies
+        if: env.HF_API_TOKEN != ''
+        run: pip install -r ../requirements.txt -r ../requirements-dev.txt
+      - name: Single-sample RoBERTa call
+        if: env.HF_API_TOKEN != ''
+        run: python scripts/roberta_smoke.py
+      - name: RoBERTa holdout accuracy (>= 0.92, no sklearn fallbacks allowed)
+        if: env.HF_API_TOKEN != ''
+        env:
+          ACCURACY_REPORT_DIR: ${{ github.workspace }}/accuracy-reports
+        run: pytest -m accuracy -k roberta
+      - uses: actions/upload-artifact@v7
+        if: always() && env.HF_API_TOKEN != ''
+        with:
+          name: accuracy-reports-roberta
+          path: accuracy-reports/
+          if-no-files-found: ignore

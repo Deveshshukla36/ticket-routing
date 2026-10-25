@@ -2,11 +2,13 @@ import json
 import re
 import time
 from pathlib import Path
-from typing import Dict, Any, List, Optional
+from typing import Any, Dict, Optional, TypedDict
+
 import joblib
 import numpy as np
 
 from config import settings
+from schemas.prediction import IntentPrediction
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 MODEL_PATH = BASE_DIR / "models" / "intent_classifier.joblib"
@@ -14,8 +16,14 @@ METRICS_PATH = BASE_DIR / "models" / "metrics.json"
 MODEL_B_PATH = BASE_DIR / "models" / "intent_classifier_b.joblib"
 METRICS_B_PATH = BASE_DIR / "models" / "metrics_b.json"
 
+class Route(TypedDict):
+    team: str
+    priority: str
+    sla_hours: float
+
+
 # Routing table: which team handles each intent, default priority, and default SLA hours.
-ROUTING_TABLE = {
+ROUTING_TABLE: Dict[str, Route] = {
     "Billing":          {"team": "Billing & Payments",   "priority": "Medium", "sla_hours": 4.0},
     "Technical Issue":  {"team": "Technical Support L2",  "priority": "High",   "sla_hours": 2.0},
     "Account Access":   {"team": "Identity & Access",     "priority": "High",   "sla_hours": 2.0},
@@ -98,6 +106,19 @@ class IntentClassifier:
             "latency_ms": round(latency_ms, 3),
             "is_ambiguous_input": False,
         }
+
+    def predict_intent(self, text: str) -> IntentPrediction:
+        """Backend-agnostic prediction (all class scores, highest first) for ModelRouter."""
+        result = self.predict(text, top_k=len(self.classes_))
+        return IntentPrediction(
+            intent=result["predicted_intent"],
+            confidence=result["confidence"],
+            all_scores={s["label"]: s["confidence"] for s in result["top_k"]},
+            model_version=self.version,
+            latency_ms=result["latency_ms"],
+            backend="sklearn",
+            is_ambiguous_input=result["is_ambiguous_input"],
+        )
 
 
 _classifiers: Dict[str, IntentClassifier] = {}

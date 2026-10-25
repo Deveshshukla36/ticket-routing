@@ -1,10 +1,12 @@
 from datetime import datetime, timezone
-from sqlalchemy import (
-    Column, Integer, String, Float, Text, DateTime, Boolean, JSON
-)
-from sqlalchemy.orm import declarative_base
 
-Base = declarative_base()
+from sqlalchemy import JSON, Boolean, Column, DateTime, Float, Integer, String, Text
+from sqlalchemy.orm import DeclarativeBase
+
+
+class Base(DeclarativeBase):
+    pass
+
 
 class TicketModel(Base):
     __tablename__ = "tickets"

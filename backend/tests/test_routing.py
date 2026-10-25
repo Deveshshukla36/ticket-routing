@@ -1,7 +1,8 @@
 import pytest
+
 from ml.sentiment import sentiment_analyzer
-from services.routing_service import smart_routing_engine
 from schemas.ticket import RouteRequest
+from services.routing_service import smart_routing_engine
 
 
 def test_sentiment_analysis():
