@@ -1,19 +1,29 @@
 import logging
+
 from sqlalchemy import create_engine, text
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import Session, sessionmaker
+
 from config import settings
-from .models import Base, ModelRegistryModel
+
+from .models import Base
 
 logger = logging.getLogger("intent-routing.db")
 
+# Some providers hand out postgres:// URLs; SQLAlchemy 2 only accepts postgresql://.
+DATABASE_URL = settings.DATABASE_URL
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = "postgresql://" + DATABASE_URL[len("postgres://"):]
+
 connect_args = {}
-if settings.DATABASE_URL.startswith("sqlite"):
+if DATABASE_URL.startswith("sqlite"):
     connect_args = {"check_same_thread": False}
 
 engine = create_engine(
-    settings.DATABASE_URL,
+    DATABASE_URL,
     connect_args=connect_args,
     echo=settings.DEBUG,
+    # Neon closes idle connections and Render free instances sleep; re-check before use.
+    pool_pre_ping=True,
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

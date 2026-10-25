@@ -8,8 +8,8 @@ It is included so the transformer architecture, training loop, and evaluation ar
 fully specified and runnable as-is in a normal ML environment (Colab, SageMaker, etc).
 
 The API in this repo serves `models/intent_classifier.joblib` (TF-IDF + linear SVM)
-as the actual production model — see train.py and classifier.py. Swapping this
-transformer checkpoint in only requires changing classifier.py's `.predict()` to call
+as the actual production model — see train.py and ml/classifier.py. Swapping this
+transformer checkpoint in only requires changing ml/classifier.py's `.predict()` to call
 `model(**tokenizer(text, return_tensors="pt"))` instead of `pipeline.predict_proba`.
 
 Usage (outside this sandbox):
@@ -18,18 +18,19 @@ Usage (outside this sandbox):
 """
 import argparse
 import json
+
 import numpy as np
 import pandas as pd
 import torch
-from torch.utils.data import Dataset
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score
+from sklearn.model_selection import train_test_split
+from torch.utils.data import Dataset
 
 
 class TicketDataset(Dataset):
     def __init__(self, texts, labels, tokenizer, label2id, max_len=128):
         self.encodings = tokenizer(list(texts), truncation=True, padding=True, max_length=max_len)
-        self.labels = [label2id[l] for l in labels]
+        self.labels = [label2id[lab] for lab in labels]
 
     def __len__(self):
         return len(self.labels)
@@ -59,14 +60,16 @@ def main():
     args = parser.parse_args()
 
     from transformers import (
-        AutoTokenizer, AutoModelForSequenceClassification,
-        TrainingArguments, Trainer,
+        AutoModelForSequenceClassification,
+        AutoTokenizer,
+        Trainer,
+        TrainingArguments,
     )
 
     df = pd.read_csv("data/tickets_dataset.csv")
     labels = sorted(df["label"].unique())
-    label2id = {l: i for i, l in enumerate(labels)}
-    id2label = {i: l for l, i in label2id.items()}
+    label2id = {lab: i for i, lab in enumerate(labels)}
+    id2label = {i: lab for lab, i in label2id.items()}
 
     train_df, test_df = train_test_split(df, test_size=0.2, stratify=df["label"], random_state=42)
 

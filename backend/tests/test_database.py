@@ -1,9 +1,6 @@
-import pytest
-from database.connection import init_db, check_db_health, SessionLocal
-from database.models import PredictionModel, FeedbackModel
+from database.connection import check_db_health, init_db
+from schemas.ticket import ClassificationResult, FeedbackIn, IntentScore
 from services.ticket_service import ticket_service
-from schemas.ticket import FeedbackIn, ClassificationResult, IntentScore
-from datetime import datetime
 
 
 def test_database_health():
