@@ -1,5 +1,5 @@
-from .connection import get_db, init_db, check_db_health
-from .models import TicketModel, PredictionModel, FeedbackModel, RoutingHistoryModel, ModelRegistryModel
+from .connection import check_db_health, get_db, init_db
+from .models import FeedbackModel, ModelRegistryModel, PredictionModel, RoutingHistoryModel, TicketModel
 
 __all__ = [
     "get_db",

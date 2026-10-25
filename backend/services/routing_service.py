@@ -1,11 +1,12 @@
 import uuid
-from typing import Dict, Any, Optional
 from datetime import datetime, timezone
+from typing import Optional
 
-from ml.classifier import get_classifier, ROUTING_TABLE
-from ml.sentiment import sentiment_analyzer
-from schemas.ticket import RouteRequest, RouteResult, IntentScore
 from config import settings
+from ml.model_router import ModelRouter, get_model_router
+from ml.sentiment import sentiment_analyzer
+from schemas.ticket import RouteRequest, RouteResult
+from services.intent_decision import decide
 
 
 class SmartRoutingEngine:
@@ -20,21 +21,22 @@ class SmartRoutingEngine:
     - Human Review Escalation
     """
 
-    def route_ticket(self, request: RouteRequest) -> RouteResult:
+    def route_ticket(self, request: RouteRequest, model_router: Optional[ModelRouter] = None) -> RouteResult:
         ticket_id = request.ticket_id or str(uuid.uuid4())[:8]
-        clf = get_classifier(request.variant or "A")
+        model_router = model_router or get_model_router()
 
         threshold = request.confidence_threshold if request.confidence_threshold is not None else settings.CONFIDENCE_THRESHOLD
 
         # 1. Intent Classification
-        pred = clf.predict(request.text, top_k=3, threshold=threshold)
-        intent = pred["predicted_intent"]
-        confidence = pred["confidence"]
-        base_priority = pred.get("base_priority", pred.get("priority", "Medium"))
-        base_team = pred["routed_team"]
-        latency_ms = pred["latency_ms"]
-        model_version = pred["model_version"]
-        top_k_scores = [IntentScore(label=item["label"], confidence=item["confidence"]) for item in pred.get("top_k", [])]
+        pred = model_router.classify_ab(request.text, request.variant or "A")
+        decision = decide(pred, threshold)
+        intent = pred.intent
+        confidence = pred.confidence
+        base_priority = decision.base_priority
+        base_team = decision.routed_team
+        latency_ms = pred.latency_ms
+        model_version = pred.model_version
+        top_k_scores = decision.top_k
 
         # 2. Sentiment & Urgency Analysis
         s_result = sentiment_analyzer.analyze(request.text)

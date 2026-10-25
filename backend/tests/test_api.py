@@ -1,5 +1,5 @@
-import pytest
 from fastapi.testclient import TestClient
+
 from main import app
 
 client = TestClient(app)
@@ -9,7 +9,8 @@ def test_health_check():
     response = client.get("/api/v1/health")
     assert response.status_code == 200
     data = response.json()
-    assert data["status"] in ("healthy", "degraded")
+    assert data["status"] in ("ok", "degraded")
+    assert data["backend"] == "sklearn" and data["db"] in ("ok", "error")
     assert data["model_loaded"] is True
     assert data["model_version"] == "v1.0.0"
 
@@ -46,9 +47,10 @@ def test_model_compare():
     assert "model_b" in data
     assert "transformer_benchmark" in data
     # Verify reported 94% RoBERTa benchmark is preserved
-    roberta = data["transformer_benchmark"]
-    assert roberta["accuracy"] == 0.9400
-    assert roberta["model_version"] == "v2.0.0-roberta"
+    # No unverified RoBERTa figure may be reported (the old 94% had no reproducible source).
+    assert data["transformer_benchmark"] == {"status": "not_trained", "verified": False}
+    assert 0.0 < data["model_a"]["holdout_accuracy"] < 1.0
+    assert data["model_a"]["holdout_samples"] == 200
 
 
 def test_list_models():
@@ -59,7 +61,10 @@ def test_list_models():
     versions = [m["version"] for m in models]
     assert "v1.0.0" in versions
     assert "v1.1.0-challenger" in versions
-    assert "v2.0.0-roberta" in versions
+    by_variant = {m["variant"]: m for m in models}
+    assert by_variant["A"]["name"] == "Production Intent Classifier"
+    assert by_variant["A"]["evaluated_on"] == "independent holdout (n=200)"
+    assert by_variant["C"]["status"] == "Not Trained" and by_variant["C"]["accuracy"] is None
 
 
 def test_classify_single_ticket():

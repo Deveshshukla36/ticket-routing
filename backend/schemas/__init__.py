@@ -1,26 +1,28 @@
-from .ticket import (
-    TicketIn,
-    BatchTicketIn,
-    IntentScore,
-    ClassificationResult,
-    BatchClassificationResult,
-    RouteRequest,
-    RouteResult,
-    FeedbackIn,
-    FeedbackResponse,
-)
-from .model import (
-    HealthStatus,
-    ModelInfo,
-    ClassMetric,
-    ModelMetricsDetailed,
-    ModelComparisonResponse,
-    ModelRegistryItem,
-)
 from .ai import (
     AIResponseRequest,
-    KnowledgeArticle,
     AIResponseResult,
+    KnowledgeArticle,
+)
+from .model import (
+    CircuitBreakerStatus,
+    ClassMetric,
+    HealthStatus,
+    ModelComparisonResponse,
+    ModelInfo,
+    ModelMetricsDetailed,
+    ModelRegistryItem,
+    ServiceMetrics,
+)
+from .ticket import (
+    BatchClassificationResult,
+    BatchTicketIn,
+    ClassificationResult,
+    FeedbackIn,
+    FeedbackResponse,
+    IntentScore,
+    RouteRequest,
+    RouteResult,
+    TicketIn,
 )
 
 __all__ = [
@@ -34,6 +36,8 @@ __all__ = [
     "FeedbackIn",
     "FeedbackResponse",
     "HealthStatus",
+    "CircuitBreakerStatus",
+    "ServiceMetrics",
     "ModelInfo",
     "ClassMetric",
     "ModelMetricsDetailed",

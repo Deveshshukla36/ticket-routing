@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from typing import Optional
+
 from pydantic import BaseModel
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -26,7 +27,13 @@ class Settings(BaseModel):
     # ML & Routing
     DEFAULT_MODEL_VARIANT: str = os.getenv("DEFAULT_MODEL_VARIANT", "A")
     CONFIDENCE_THRESHOLD: float = float(os.getenv("CONFIDENCE_THRESHOLD", "0.60"))
+    MODEL_BACKEND: str = os.getenv("MODEL_BACKEND", "sklearn")  # sklearn | roberta
     MODELS_DIR: Path = BASE_DIR / "models"
+
+    # RoBERTa via Hugging Face (see docs/adr/001-roberta-serving.md)
+    HF_API_TOKEN: Optional[str] = os.getenv("HF_API_TOKEN") or None
+    HF_MODEL_ID: Optional[str] = os.getenv("HF_MODEL_ID") or None
+    HF_ENDPOINT_URL: Optional[str] = os.getenv("HF_ENDPOINT_URL") or None
     DATA_DIR: Path = BASE_DIR / "data"
 
     # AI & LLM Enhancement (Optional)

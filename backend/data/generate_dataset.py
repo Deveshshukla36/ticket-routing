@@ -3,6 +3,7 @@ Categories mirror common SaaS helpdesk intents so routing logic is realistic.
 """
 import csv
 import random
+from pathlib import Path
 
 random.seed(42)
 
@@ -188,13 +189,13 @@ labels = list(TEMPLATES.keys())
 noisy_rows = []
 for text, label, tid in rows:
     if random.random() < 0.04:
-        other = random.choice([l for l in labels if l != label])
+        other = random.choice([lab for lab in labels if lab != label])
         noisy_rows.append((text, other, tid))
     else:
         noisy_rows.append((text, label, tid))
 rows = noisy_rows
 
-from pathlib import Path
+
 output_csv = Path(__file__).resolve().parent / "tickets_dataset.csv"
 with open(output_csv, "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f)

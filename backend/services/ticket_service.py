@@ -1,13 +1,12 @@
 import logging
-from collections import deque, Counter
+from collections import Counter, deque
 from datetime import datetime, timezone
-from typing import List, Dict, Any, Optional
+from typing import Any, Deque, Dict, List
 
 from database.connection import SessionLocal
 from database.models import (
-    TicketModel,
-    PredictionModel,
     FeedbackModel,
+    PredictionModel,
     RoutingHistoryModel,
 )
 from schemas.ticket import (
@@ -20,8 +19,8 @@ from schemas.ticket import (
 logger = logging.getLogger("intent-routing.ticket-service")
 
 # In-memory rolling logs preserved for sub-millisecond real-time monitoring dashboard
-PREDICTION_LOG = deque(maxlen=500)
-FEEDBACK_LOG = deque(maxlen=500)
+PREDICTION_LOG: Deque[Dict[str, Any]] = deque(maxlen=500)
+FEEDBACK_LOG: Deque[Dict[str, Any]] = deque(maxlen=500)
 
 
 class TicketService:

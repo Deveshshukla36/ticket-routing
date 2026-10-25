@@ -1,0 +1,26 @@
+# =============================================================================
+# requirements-ml.txt: LOCAL TRAINING ONLY. Never deployed, not used in CI.
+#
+# Used by backend/train_transformer.py to fine-tune RoBERTa on your own machine,
+# then push the checkpoint to the Hugging Face Hub (see docs/adr/001-roberta-serving.md).
+#
+# Install (from the repo root):
+#   CPU:          pip install -r requirements-ml.txt
+#   NVIDIA GPU:   pip install torch==2.13.0 --index-url https://download.pytorch.org/whl/cu126
+#                 pip install -r requirements-ml.txt
+#   (torch 2.13.0 wheels exist for cu126 and cu130; cu126 works with older drivers.
+#    Check yours with `nvidia-smi`; see https://pytorch.org/get-started/locally/)
+#
+# Pins are the versions verified together in this repo's .venv (2026-10-25).
+# =============================================================================
+-r requirements.txt
+
+torch==2.13.0              # training loop / tensors
+transformers==5.14.1       # RoBERTa model, tokenizer, Trainer
+accelerate==1.15.0         # required by transformers.Trainer
+huggingface_hub==1.27.0    # download base weights, push the fine-tuned model to the Hub
+pandas==3.0.5              # train.py / train_transformer.py read the CSV with pandas
+
+# sentencepiece is intentionally NOT included: roberta-base and bert-base-uncased use
+# byte-level BPE / WordPiece tokenizers (via `tokenizers`, pulled in by transformers).
+# Add `sentencepiece==0.2.2` only if you switch to a SentencePiece model (e.g. XLM-R, T5).

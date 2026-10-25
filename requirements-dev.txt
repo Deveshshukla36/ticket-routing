@@ -1,0 +1,7 @@
+# CI / local tooling only (lint, type-check, tests). Not deployed to Vercel.
+# Install with: pip install -r requirements.txt -r requirements-dev.txt
+pytest==9.1.1
+httpx==0.28.1            # FastAPI TestClient transport
+ruff==0.17.2
+mypy==2.4.0
+types-requests==2.33.0.20261006

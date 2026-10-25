@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Light theme (default): soft grey canvas, frosted white panels. */
+  :root {
+    --canvas: 238 240 243;
+    --surface: 255 255 255;
+    --ink: 29 36 51;
+    --ink-2: 91 100 116;
+    --ink-3: 107 116 134;
+    --line: 226 229 234;
+    --track: 229 232 237;
+    --accent: 61 126 245;
+    --accent-soft: 220 231 253;
+    --good: 31 154 69;
+    --good-soft: 225 243 230;
+    --bad: 229 72 77;
+    --bad-soft: 252 232 233;
+    /* Deeper status fills that keep white pill text >= 4.5:1. */
+    --good-strong: 26 127 58;
+    --bad-strong: 201 56 61;
+    /* Neutral data mark (e.g. 'needs review' bars), CVD-separable from --good. */
+    --mark-muted: 169 177 190;
+
+    /* Legacy shadcn-style tokens still used by older pages. */
+    --background: 216 14% 94%;
+    --foreground: 222 28% 16%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 28% 16%;
+    --border: 216 14% 90%;
+    --ring: 218 90% 60%;
+  }
+
+  .dark {
+    --canvas: 14 17 22;
+    --surface: 24 28 36;
+    --ink: 232 235 241;
+    --ink-2: 160 168 182;
+    --ink-3: 138 147 163;
+    --line: 44 50 62;
+    --track: 40 46 58;
+    --accent: 74 130 230;
+    --accent-soft: 31 48 82;
+    --good: 47 166 80;
+    --good-soft: 22 52 33;
+    --bad: 224 84 90;
+    --bad-soft: 64 26 30;
+    --good-strong: 26 127 58;
+    --bad-strong: 201 56 61;
+    --mark-muted: 90 98 115;
+
+    --background: 216 22% 7%;
+    --foreground: 220 25% 93%;
+    --card: 220 20% 12%;
+    --card-foreground: 220 25% 93%;
+    --border: 220 17% 21%;
+    --ring: 218 76% 60%;
+  }
+
+  body {
+    background-color: rgb(var(--canvas));
+    color: rgb(var(--ink));
+    font-family: var(--font-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* Frosted panel, the reference's main container. */
+  .panel {
+    @apply rounded-panel border border-white/70 bg-surface/75 shadow-panel backdrop-blur-xl dark:border-white/5;
+  }
+  /* Recessed inset inside a panel (table blocks, nested lists). */
+  .inset-panel {
+    @apply rounded-2xl border border-line/70 bg-surface/90 dark:bg-canvas/60;
+  }
+}
+
+/* Very soft light wash behind everything, as in the reference render. */
+.canvas-wash {
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgb(255 255 255 / 0.9), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgb(var(--accent-soft) / 0.45), transparent 60%),
+    rgb(var(--canvas));
+}
+.dark .canvas-wash {
+  background:
+    radial-gradient(1000px 500px at 15% -10%, rgb(255 255 255 / 0.04), transparent 60%),
+    rgb(var(--canvas));
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.dark .glass-card {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 41, 59, 0.8);
+}
