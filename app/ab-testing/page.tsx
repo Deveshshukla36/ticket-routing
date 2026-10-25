@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '@/lib/api';
 import { ModelComparisonResponse, ClassificationResult } from '@/types';
-import { formatLatency } from '@/lib/utils';
+import { formatLatency, formatMetric } from '@/lib/utils';
 import { toast } from 'sonner';
 import {
   GitCompare,
@@ -80,7 +80,7 @@ export default function ABTestingPage() {
             Model A/B Evaluation & Transformer Benchmark
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            Compare the production calibrated LinearSVC against challenger Naive Bayes and the RoBERTa 94% benchmark.
+            Compare the production calibrated LinearSVC against the challenger Naive Bayes on the independent holdout set; RoBERTa is listed once it has been trained and evaluated.
           </p>
         </div>
 
@@ -115,15 +115,15 @@ export default function ABTestingPage() {
 
           <div className="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Test Accuracy:</span>
+              <span className="text-slate-500">Holdout Accuracy:</span>
               <span className="font-mono font-semibold text-slate-900 dark:text-white">
-                {((modelA.accuracy || 0.9219) * 100).toFixed(1)}%
+                {formatMetric(modelA.holdout_accuracy)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-slate-500">F1 Weighted:</span>
               <span className="font-mono font-semibold text-slate-900 dark:text-white">
-                {((modelA.f1_weighted || 0.9219) * 100).toFixed(1)}%
+                {formatMetric(modelA.holdout_f1_weighted)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
@@ -159,15 +159,15 @@ export default function ABTestingPage() {
 
           <div className="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Test Accuracy:</span>
+              <span className="text-slate-500">Holdout Accuracy:</span>
               <span className="font-mono font-semibold text-slate-900 dark:text-white">
-                {((modelB.accuracy || 0.8854) * 100).toFixed(1)}%
+                {formatMetric(modelB.holdout_accuracy)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-slate-500">F1 Weighted:</span>
               <span className="font-mono font-semibold text-slate-900 dark:text-white">
-                {((modelB.f1_weighted || 0.8845) * 100).toFixed(1)}%
+                {formatMetric(modelB.holdout_f1_weighted)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
@@ -187,9 +187,9 @@ export default function ABTestingPage() {
         <div className="p-5 rounded-xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900/60 shadow-sm space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/50">
-              Benchmark Standard
+              {transformer.verified ? 'Verified Benchmark' : 'Not Trained'}
             </span>
-            <span className="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-bold">94.0% SOTA</span>
+            <span className="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-bold">{formatMetric(transformer.accuracy)}</span>
           </div>
 
           <div>
@@ -197,32 +197,32 @@ export default function ABTestingPage() {
               RoBERTa-base Fine-Tuned
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              12-layer deep contextual transformer gold standard
+              Served via Hugging Face when MODEL_BACKEND=roberta
             </p>
           </div>
 
           <div className="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Test Accuracy:</span>
+              <span className="text-slate-500">Holdout Accuracy:</span>
               <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
-                {((transformer.accuracy || 0.9400) * 100).toFixed(1)}%
+                {formatMetric(transformer.accuracy)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-slate-500">F1 Weighted:</span>
               <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
-                {((transformer.f1_weighted || 0.9408) * 100).toFixed(1)}%
+                {formatMetric(transformer.f1_weighted)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-slate-500">Test Set Size:</span>
               <span className="font-mono font-medium text-slate-800 dark:text-slate-200">
-                {transformer.test_samples || 770} samples
+                {transformer.test_samples ? `${transformer.test_samples} samples` : '—'}
               </span>
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-slate-500">Benchmark Role:</span>
-              <span className="font-medium text-slate-700 dark:text-slate-300">Target Ceiling</span>
+              <span className="font-medium text-slate-700 dark:text-slate-300">{transformer.verified ? 'Benchmark' : 'Planned (gate ≥ 92%)'}</span>
             </div>
           </div>
         </div>

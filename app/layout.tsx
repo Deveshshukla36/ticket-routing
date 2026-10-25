@@ -1,12 +1,19 @@
 import type { Metadata } from 'next';
+import { Manrope } from 'next/font/google';
 import './globals.css';
 import { Providers } from '@/components/providers';
-import { Sidebar } from '@/components/sidebar';
-import { Navbar } from '@/components/navbar';
+import { TopNav } from '@/components/top-nav';
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-sans',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: 'Smart Ticket Routing & Intent Classification Platform',
-  description: 'Enterprise AI customer support intent classification, smart routing, and model monitoring.',
+  title: 'IntentRoute · Ticket Routing',
+  description: 'Support-ticket intent classification, smart routing, and model monitoring.',
 };
 
 export default function RootLayout({
@@ -15,16 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex antialiased">
+    <html lang="en" suppressHydrationWarning className={manrope.variable}>
+      <body className="canvas-wash min-h-screen text-ink antialiased">
         <Providers>
-          <Sidebar />
-          <div className="flex-1 flex flex-col min-w-0">
-            <Navbar />
-            <main className="flex-1 p-6 md:p-8 max-w-7xl w-full mx-auto overflow-y-auto">
-              {children}
-            </main>
-          </div>
+          <TopNav />
+          <main className="mx-auto w-full max-w-[1440px] px-4 pb-10 pt-2 sm:px-6">{children}</main>
         </Providers>
       </body>
     </html>

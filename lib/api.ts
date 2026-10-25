@@ -9,11 +9,12 @@ import {
   FeedbackResponse,
   AIResponseResult,
   MonitoringStats,
+  ServiceMetrics,
 } from '@/types';
 
-// On Vercel: NEXT_PUBLIC_API_URL='' → relative paths routed by vercel.json
-// On local dev: unset → '' → next.config.js rewrites /api/* to FastAPI on 8000
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? '';
+// Production (Vercel): NEXT_PUBLIC_API_BASE = the Render backend URL, e.g. https://intentroute-api.onrender.com
+// Local dev: leave unset → relative /api/* paths, proxied to FastAPI on :8000 by next.config.js
+const API_BASE_URL = (process.env.NEXT_PUBLIC_API_BASE ?? '').replace(/\/+$/, '');
 
 async function fetchJson<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`;
@@ -63,6 +64,10 @@ export const api = {
 
   getModelComparison: async (): Promise<ModelComparisonResponse> => {
     return fetchJson<ModelComparisonResponse>('/api/v1/model/compare');
+  },
+
+  getServiceMetrics: async (): Promise<ServiceMetrics> => {
+    return fetchJson<ServiceMetrics>('/api/v1/metrics');
   },
 
   getModels: async (): Promise<ModelRegistryItem[]> => {

@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Local development: proxy /api/* → FastAPI on port 8000.
-  // On Vercel, vercel.json routes /api/* to the Python serverless function
-  // before Next.js sees the request, so these rewrites are effectively no-ops
-  // in production.
+  experimental: {
+    workerThreads: false,
+    cpus: 1,
+  },
+  // Local development only: proxy relative /api/* calls to FastAPI on port 8000.
+  // In production the browser calls the Render backend directly via
+  // NEXT_PUBLIC_API_BASE (see lib/api.ts), so no rewrite is needed.
   async rewrites() {
     if (process.env.NODE_ENV === 'production') return [];
     return [

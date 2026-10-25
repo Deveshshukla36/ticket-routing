@@ -10,6 +10,11 @@ export function formatLatency(ms: number): string {
   return `${ms.toFixed(1)}ms`;
 }
 
+/** Percentage for an evaluation metric that may not exist yet (e.g. an untrained model). */
+export function formatMetric(val: number | null | undefined): string {
+  return typeof val === 'number' ? `${(val * 100).toFixed(1)}%` : '—';
+}
+
 export function formatPercentage(val: number): string {
   return `${(val * 100).toFixed(1)}%`;
 }

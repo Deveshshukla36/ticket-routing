@@ -136,7 +136,7 @@ export default function SettingsPage() {
               <span className="text-slate-400 block font-medium text-[10px] uppercase">FastAPI Health Gateway</span>
               <div className="flex items-center gap-1.5 font-semibold text-slate-900 dark:text-white">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                <span className="capitalize">{health?.status || 'Online'}</span>
+                <span className="capitalize">{health ? (health.status === 'ok' ? 'Healthy' : health.status) : 'Online'}</span>
               </div>
               <span className="text-[11px] text-slate-500 font-mono">Uptime: {Math.floor((health?.uptime_seconds || 0) / 60)} minutes</span>
             </div>

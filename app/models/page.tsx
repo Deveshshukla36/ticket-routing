@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { api } from '@/lib/api';
+import { formatMetric } from '@/lib/utils';
 import { ModelRegistryItem } from '@/types';
 import {
   Layers,
@@ -112,15 +113,15 @@ export default function ModelsPage() {
                     </span>
                   </div>
                   <div className="flex justify-between text-xs">
-                    <span className="text-slate-500">Test Accuracy:</span>
+                    <span className="text-slate-500" title={model.evaluated_on ?? undefined}>Holdout Accuracy:</span>
                     <span className="font-mono font-semibold text-slate-900 dark:text-white">
-                      {(model.accuracy * 100).toFixed(1)}%
+                      {formatMetric(model.accuracy)}
                     </span>
                   </div>
                   <div className="flex justify-between text-xs">
                     <span className="text-slate-500">F1 Weighted:</span>
                     <span className="font-mono font-semibold text-slate-900 dark:text-white">
-                      {(model.f1_score * 100).toFixed(1)}%
+                      {formatMetric(model.f1_score)}
                     </span>
                   </div>
                 </div>
@@ -153,11 +154,11 @@ export default function ModelsPage() {
                 Evaluation Metrics: {metrics.model_version || selectedVariant}
               </h3>
               <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                Class-level precision, recall, and F1 performance on held-out test split ({metrics.test_samples || 193} samples)
+                Per-class scores from the original training split ({metrics.test_samples} samples; it shares templates with training, so these are optimistic). Holdout accuracy: {formatMetric(metrics.holdout_accuracy)}
               </p>
             </div>
             <span className="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400">
-              Accuracy: {((metrics.accuracy || 0.94) * 100).toFixed(1)}%
+              Split accuracy: {formatMetric(metrics.accuracy)}
             </span>
           </div>
 
