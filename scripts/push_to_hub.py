@@ -19,7 +19,8 @@ from typing import Any, Dict, List
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_MODEL_DIR = ROOT / "backend" / "models" / "roberta-intent-classifier"
-UPLOAD_IGNORE = ["checkpoint-*", "*.pt", "optimizer*", "scheduler*", "rng_state*", "trainer_state.json"]
+# training_args.bin is a pickle (flagged as unsafe on the Hub) and holds local paths.
+UPLOAD_IGNORE = ["checkpoint-*", "*.pt", "*.bin", "optimizer*", "scheduler*", "rng_state*", "trainer_state.json"]
 EXPECTED_LABELS = [
     "Account Access", "Billing", "Bug Report", "Cancellation",
     "Complaint", "Feature Request", "General Inquiry", "Technical Issue",
@@ -32,7 +33,7 @@ def check_model_dir(model_dir: Path) -> Dict[str, Any]:
     config_path, metrics_path = model_dir / "config.json", model_dir / "metrics.json"
     if not model_dir.is_dir():
         sys.exit(f"Model folder not found: {model_dir}\nRun backend/train_transformer.py first.")
-    if not any((model_dir / f).exists() for f in ("model.safetensors", "pytorch_model.bin")):
+    if not (model_dir / "model.safetensors").exists():
         problems.append("no weights (model.safetensors)")
     if not any((model_dir / f).exists() for f in ("tokenizer.json", "vocab.json")):
         problems.append("no tokenizer files")

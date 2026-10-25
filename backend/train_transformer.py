@@ -14,6 +14,7 @@ Writes backend/models/roberta-intent-classifier/ (model, tokenizer, metrics.json
 """
 import argparse
 import json
+import math
 import platform
 import subprocess
 import sys
@@ -102,7 +103,10 @@ def main() -> int:
     id2label = {i: label for label, i in label2id.items()}
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
     model = AutoModelForSequenceClassification.from_pretrained(
-        args.model_name, num_labels=len(LABELS), id2label=id2label, label2id=label2id
+        args.model_name, num_labels=len(LABELS), id2label=id2label, label2id=label2id,
+        # A base model that already has a classifier head of another size (e.g. 2 classes)
+        # gets a fresh 8-way head; the head is trained from scratch here either way.
+        ignore_mismatched_sizes=True,
     )
 
     class Encoded(torch.utils.data.Dataset):
@@ -120,6 +124,10 @@ def main() -> int:
         preds = np.argmax(pred.predictions, axis=-1)
         return {"accuracy": float((preds == pred.label_ids).mean())}
 
+    # warmup_ratio is deprecated in transformers 5; convert it to steps over the max run length.
+    steps_per_epoch = math.ceil(len(split.train) / args.batch_size)
+    warmup_steps = int(args.warmup_ratio * steps_per_epoch * args.epochs)
+
     training_args = TrainingArguments(
         output_dir=str(args.checkpoint_dir),
         num_train_epochs=args.epochs,
@@ -127,7 +135,7 @@ def main() -> int:
         per_device_eval_batch_size=64,
         learning_rate=args.lr,
         weight_decay=args.weight_decay,
-        warmup_ratio=args.warmup_ratio,
+        warmup_steps=warmup_steps,
         eval_strategy="epoch",
         save_strategy="epoch",
         load_best_model_at_end=True,
@@ -212,9 +220,10 @@ def main() -> int:
         "training": {
             **split.summary(),
             "epochs_run": round(trainer.state.epoch or 0, 2),
-            "best_checkpoint": trainer.state.best_model_checkpoint,
+            "best_checkpoint": Path(trainer.state.best_model_checkpoint or "").name or None,
             "train_seconds": round(train_seconds, 1),
-            "hyperparameters": {k: (str(v) if isinstance(v, Path) else v) for k, v in vars(args).items() if k != "dry_run"},
+            # Local paths are left out: this file is uploaded to the Hub with the model.
+            "hyperparameters": {k: v for k, v in vars(args).items() if not isinstance(v, Path) and k != "dry_run"},
         },
         "environment": {
             "device": device_name, "fp16": fp16, "torch": torch.__version__,
