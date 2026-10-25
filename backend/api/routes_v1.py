@@ -1,62 +1,69 @@
+import logging
 import time
-from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
-from fastapi import APIRouter, HTTPException, Query, Depends
+from typing import List, Literal
 
-from schemas.ticket import (
-    TicketIn,
-    BatchTicketIn,
-    ClassificationResult,
-    BatchClassificationResult,
-    RouteRequest,
-    RouteResult,
-    FeedbackIn,
-    FeedbackResponse,
-)
-from schemas.model import (
-    HealthStatus,
-    ModelInfo,
-    ModelComparisonResponse,
-    ModelRegistryItem,
-)
+from fastapi import APIRouter, Depends, HTTPException, Response
+
+from config import settings
+from database.connection import check_db_health
+from ml.model_router import ModelRouter, get_model_router
+from ml.registry import model_registry
+from ml.sentiment import sentiment_analyzer
 from schemas.ai import (
     AIResponseRequest,
     AIResponseResult,
 )
-from ml.classifier import get_classifier
-from ml.registry import model_registry
-from ml.sentiment import sentiment_analyzer
-from services.routing_service import smart_routing_engine
+from schemas.model import (
+    CircuitBreakerStatus,
+    HealthStatus,
+    ModelComparisonResponse,
+    ModelInfo,
+    ModelRegistryItem,
+    ServiceMetrics,
+)
+from schemas.ticket import (
+    BatchClassificationResult,
+    BatchTicketIn,
+    ClassificationResult,
+    FeedbackIn,
+    FeedbackResponse,
+    RouteRequest,
+    RouteResult,
+    TicketIn,
+)
+from services.intent_decision import decide
 from services.rag_service import rag_service
+from services.request_metrics import request_metrics
+from services.routing_service import smart_routing_engine
 from services.ticket_service import ticket_service
-from database.connection import check_db_health
-from config import settings
 
 router = APIRouter()
+logger = logging.getLogger("intentroute.api")
 START_TIME = time.time()
 
 
-def _classify_one(ticket: TicketIn, variant: str = "A") -> ClassificationResult:
-    clf = get_classifier(variant)
-    result = clf.predict(ticket.text)
-    
+def _classify_one(ticket: TicketIn, model_router: ModelRouter, variant: str = "A") -> ClassificationResult:
+    pred = model_router.classify_ab(ticket.text, variant)
+    decision = decide(pred)
+
     # Enrich with sentiment
     s_res = sentiment_analyzer.analyze(ticket.text)
     
     record = ClassificationResult(
         ticket_id=ticket.ticket_id,
         text=ticket.text,
-        predicted_intent=result["predicted_intent"],
-        confidence=result["confidence"],
-        top_k=result["top_k"],
-        routed_team=result["routed_team"],
-        priority=result["priority"],
-        model_version=result["model_version"],
-        latency_ms=result["latency_ms"],
+        predicted_intent=pred.intent,
+        confidence=pred.confidence,
+        top_k=decision.top_k,
+        routed_team=decision.routed_team,
+        priority=decision.priority,
+        model_version=pred.model_version,
+        latency_ms=pred.latency_ms,
         timestamp=datetime.now(timezone.utc),
         sentiment=s_res["sentiment"],
-        sla_hours=result.get("sla_hours", 4.0),
-        requires_human_review=result.get("requires_human_review", False),
+        sla_hours=decision.sla_hours,
+        requires_human_review=decision.requires_human_review,
     )
     ticket_service.log_classification(record, variant=variant)
     return record
@@ -66,31 +73,56 @@ def _classify_one(ticket: TicketIn, variant: str = "A") -> ClassificationResult:
 # Health & Model Metadata (Preserved)
 # ---------------------------------------------------------------------------
 @router.get("/health", response_model=HealthStatus, tags=["Monitoring"])
-def health():
+def health(response: Response, model_router: ModelRouter = Depends(get_model_router)) -> HealthStatus:
+    """Liveness/readiness. 200 for ok/degraded (still serving), 503 when no model can load."""
     try:
-        clf = get_classifier("A")
+        versions = model_router.model_versions()
         loaded = True
-        version = clf.version
     except Exception:
-        loaded = False
-        version = "unknown"
-    
-    db_ok = check_db_health()
-    status_str = "healthy" if (loaded and db_ok) else ("degraded" if loaded else "unhealthy")
+        logger.exception("Health check: sklearn models failed to load")
+        versions, loaded = {}, False
+
+    db_ok = check_db_health()  # SELECT 1
+    status: Literal["ok", "degraded", "error"] = "ok" if (loaded and db_ok) else ("degraded" if loaded else "error")
+    if status == "error":
+        response.status_code = 503
 
     return HealthStatus(
-        status=status_str,
+        status=status,
+        backend=model_router.backend,
+        model_versions=versions,
+        db="ok" if db_ok else "error",
         model_loaded=loaded,
-        model_version=version,
+        model_version=versions.get("sklearn_a", "unknown"),
         uptime_seconds=round(time.time() - START_TIME, 2),
         database_connected=db_ok,
         environment=settings.ENVIRONMENT,
     )
 
 
+@router.get("/metrics", response_model=ServiceMetrics, tags=["Monitoring"])
+def service_metrics(model_router: ModelRouter = Depends(get_model_router)) -> ServiceMetrics:
+    """Request count, p50/p95 latency, prediction backends/fallbacks, circuit-breaker state.
+
+    Not to be confused with /api/v1/model/metrics (stored model evaluation metrics).
+    """
+    breaker = model_router.circuit_breaker()
+    breaker_status = None
+    if breaker is not None:
+        breaker_status = CircuitBreakerStatus(
+            state=breaker.state,
+            consecutive_failures=breaker.consecutive_failures,
+            failure_threshold=breaker.failure_threshold,
+            reset_timeout_s=breaker.reset_timeout_s,
+        )
+    return ServiceMetrics.model_validate(
+        {"model_backend": model_router.backend, "circuit_breaker": breaker_status, **request_metrics.snapshot()}
+    )
+
+
 @router.get("/model/info", response_model=ModelInfo, tags=["Monitoring"])
-def model_info(variant: str = "A"):
-    clf = get_classifier(variant)
+def model_info(variant: str = "A", model_router: ModelRouter = Depends(get_model_router)):
+    clf = model_router.sklearn_model(variant)
     m = clf.metrics
     return ModelInfo(
         model_version=m["model_version"],
@@ -125,23 +157,23 @@ def list_models():
 # Classification & Prediction (Preserved & Enhanced)
 # ---------------------------------------------------------------------------
 @router.post("/classify", response_model=ClassificationResult, tags=["Classification"])
-def classify(ticket: TicketIn, variant: str = "A"):
+def classify(ticket: TicketIn, variant: str = "A", model_router: ModelRouter = Depends(get_model_router)):
     try:
-        return _classify_one(ticket, variant)
+        return _classify_one(ticket, model_router, variant)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.post("/predict", response_model=ClassificationResult, tags=["Classification"])
-def predict(ticket: TicketIn, variant: str = "A"):
+def predict(ticket: TicketIn, variant: str = "A", model_router: ModelRouter = Depends(get_model_router)):
     """Standardized /predict endpoint for real-time ticket inference."""
-    return classify(ticket, variant)
+    return classify(ticket, variant, model_router)
 
 
 @router.post("/classify/batch", response_model=BatchClassificationResult, tags=["Classification"])
-def classify_batch(batch: BatchTicketIn, variant: str = "A"):
+def classify_batch(batch: BatchTicketIn, variant: str = "A", model_router: ModelRouter = Depends(get_model_router)):
     try:
-        results = [_classify_one(t, variant) for t in batch.tickets]
+        results = [_classify_one(t, model_router, variant) for t in batch.tickets]
         avg_latency = sum(r.latency_ms for r in results) / len(results)
         return BatchClassificationResult(
             results=results, count=len(results), avg_latency_ms=round(avg_latency, 3)
@@ -154,13 +186,13 @@ def classify_batch(batch: BatchTicketIn, variant: str = "A"):
 # Smart Routing Engine
 # ---------------------------------------------------------------------------
 @router.post("/route", response_model=RouteResult, tags=["Routing"])
-def smart_route(request: RouteRequest):
+def smart_route(request: RouteRequest, model_router: ModelRouter = Depends(get_model_router)):
     """
     Enterprise smart ticket routing:
     Calculates Intent + Confidence + Sentiment + Priority -> Team + SLA + Human Review Escalation.
     """
     try:
-        result = smart_routing_engine.route_ticket(request)
+        result = smart_routing_engine.route_ticket(request, model_router)
         ticket_service.log_route_result(result, variant=request.variant or "A")
         return result
     except Exception as e:

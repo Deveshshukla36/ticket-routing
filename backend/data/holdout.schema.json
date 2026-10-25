@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "intentroute/holdout.schema.json",
+  "title": "IntentRoute independent holdout set",
+  "description": "Hand-written tickets, independent of generate_dataset.py templates. Validated by data/build_holdout.py and tests/test_model_accuracy.py.",
+  "type": "array",
+  "minItems": 200,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["text", "label"],
+    "properties": {
+      "text": {"type": "string", "minLength": 3, "maxLength": 4000},
+      "label": {
+        "enum": ["Account Access", "Billing", "Bug Report", "Cancellation",
+                 "Complaint", "Feature Request", "General Inquiry", "Technical Issue"]
+      }
+    }
+  }
+}

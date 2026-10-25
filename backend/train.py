@@ -8,14 +8,15 @@ path referenced in the project spec for environments with model-hub access + a G
 """
 import json
 import time
+
 import joblib
 import pandas as pd
-from sklearn.model_selection import GroupShuffleSplit, StratifiedShuffleSplit
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.svm import LinearSVC
 from sklearn.calibration import CalibratedClassifierCV
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics import accuracy_score, classification_report, f1_score
+from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import accuracy_score, f1_score, classification_report
+from sklearn.svm import LinearSVC
 
 DATA_PATH = "data/tickets_dataset.csv"
 MODEL_PATH = "models/intent_classifier.joblib"
