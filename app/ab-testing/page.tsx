@@ -68,25 +68,17 @@ export default function ABTestingPage() {
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-5">
+      <div className="flex flex-col gap-4 pt-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">
-            <span>EVALUATION</span>
-            <span>/</span>
-            <span className="text-indigo-600 dark:text-indigo-400 font-semibold">A/B TESTING & BENCHMARKS</span>
-          </div>
-          <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
-            <GitCompare className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-            Model A/B Evaluation & Transformer Benchmark
-          </h2>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            Compare the production calibrated LinearSVC against the challenger Naive Bayes on the independent holdout set; RoBERTa is listed once it has been trained and evaluated.
+          <h1 className="text-[34px] font-light leading-tight tracking-tight text-ink">A/B evaluation</h1>
+          <p className="mt-1 max-w-2xl text-xs text-ink-3">
+            Model A against challenger B on the same holdout, plus a side-by-side run on any ticket.
           </p>
         </div>
 
         <button
           onClick={loadComparison}
-          className="p-1.5 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 transition-colors self-start sm:self-auto"
+          className="p-1.5 rounded-md bg-surface border border-line text-ink-2 hover:bg-track transition-colors self-start sm:self-auto"
           title="Refresh comparison metrics"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${fetchingComparison ? 'animate-spin' : ''}`} />
@@ -96,145 +88,145 @@ export default function ABTestingPage() {
       {/* Side-by-Side Model Spec Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Model A */}
-        <div className="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+        <div className="panel p-5 space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50">
               Variant A (Production)
             </span>
-            <span className="text-[11px] font-mono text-slate-400">{modelA.model_version || 'v1.0.0'}</span>
+            <span className="text-[11px] tabular-nums text-ink-3">{modelA.model_version || 'v1.0.0'}</span>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
+            <h3 className="text-sm font-semibold text-ink">
               Calibrated LinearSVC
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Production standard with Platt probability calibration
+            <p className="text-xs text-ink-3 mt-0.5">
+              Default model, with calibrated probabilities
             </p>
           </div>
 
-          <div className="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="space-y-1.5 pt-2 border-t border-line/70">
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Holdout Accuracy:</span>
-              <span className="font-mono font-semibold text-slate-900 dark:text-white">
+              <span className="text-ink-3">Holdout Accuracy:</span>
+              <span className="tabular-nums font-semibold text-ink">
                 {formatMetric(modelA.holdout_accuracy)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">F1 Weighted:</span>
-              <span className="font-mono font-semibold text-slate-900 dark:text-white">
+              <span className="text-ink-3">F1 Weighted:</span>
+              <span className="tabular-nums font-semibold text-ink">
                 {formatMetric(modelA.holdout_f1_weighted)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Avg Latency:</span>
-              <span className="font-mono font-semibold text-emerald-600 dark:text-emerald-400">
-                ~2.8 ms
+              <span className="text-ink-3" title="Original random split; shares templates with training, so optimistic">Training-split accuracy:</span>
+              <span className="tabular-nums text-ink-2">
+                {formatMetric(modelA.accuracy)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Traffic Allocation:</span>
-              <span className="font-mono font-semibold text-indigo-600 dark:text-indigo-400">80% Serving</span>
+              <span className="text-ink-3">Serves:</span>
+              <span className="font-medium text-ink">Every request by default</span>
             </div>
           </div>
         </div>
 
         {/* Model B */}
-        <div className="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+        <div className="panel p-5 space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-400 border border-amber-200 dark:border-amber-800/50">
               Variant B (Challenger)
             </span>
-            <span className="text-[11px] font-mono text-slate-400">{modelB.model_version || 'v1.1.0'}</span>
+            <span className="text-[11px] tabular-nums text-ink-3">{modelB.model_version || 'v1.1.0'}</span>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
+            <h3 className="text-sm font-semibold text-ink">
               Multinomial Naive Bayes
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Alternative challenger pipeline for drift & variance tests
+            <p className="text-xs text-ink-3 mt-0.5">
+              Challenger baseline, compared on the same holdout
             </p>
           </div>
 
-          <div className="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="space-y-1.5 pt-2 border-t border-line/70">
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Holdout Accuracy:</span>
-              <span className="font-mono font-semibold text-slate-900 dark:text-white">
+              <span className="text-ink-3">Holdout Accuracy:</span>
+              <span className="tabular-nums font-semibold text-ink">
                 {formatMetric(modelB.holdout_accuracy)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">F1 Weighted:</span>
-              <span className="font-mono font-semibold text-slate-900 dark:text-white">
+              <span className="text-ink-3">F1 Weighted:</span>
+              <span className="tabular-nums font-semibold text-ink">
                 {formatMetric(modelB.holdout_f1_weighted)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Avg Latency:</span>
-              <span className="font-mono font-semibold text-emerald-600 dark:text-emerald-400">
-                ~1.6 ms
+              <span className="text-ink-3" title="Original random split; shares templates with training, so optimistic">Training-split accuracy:</span>
+              <span className="tabular-nums text-ink-2">
+                {formatMetric(modelB.accuracy)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Traffic Allocation:</span>
-              <span className="font-mono font-semibold text-amber-600 dark:text-amber-400">20% Canary</span>
+              <span className="text-ink-3">Serves:</span>
+              <span className="font-medium text-ink">Only with ?variant=B</span>
             </div>
           </div>
         </div>
 
         {/* RoBERTa Benchmark */}
-        <div className="p-5 rounded-xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900/60 shadow-sm space-y-3">
+        <div className="p-5 rounded-2xl bg-surface border border-accent/40 shadow-sm space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/50">
+            <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-accent-soft text-blue-800 dark:text-blue-200 border border-accent/40">
               {transformer.verified ? 'Verified Benchmark' : 'Not Trained'}
             </span>
-            <span className="text-[11px] font-mono text-indigo-600 dark:text-indigo-400 font-bold">{formatMetric(transformer.accuracy)}</span>
+            <span className="text-[11px] tabular-nums text-accent font-semibold">{formatMetric(transformer.accuracy)}</span>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
+            <h3 className="text-sm font-semibold text-ink">
               RoBERTa-base Fine-Tuned
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            <p className="text-xs text-ink-3 mt-0.5">
               Served via Hugging Face when MODEL_BACKEND=roberta
             </p>
           </div>
 
-          <div className="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="space-y-1.5 pt-2 border-t border-line/70">
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Holdout Accuracy:</span>
-              <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
+              <span className="text-ink-3">Holdout Accuracy:</span>
+              <span className="tabular-nums font-semibold text-accent">
                 {formatMetric(transformer.accuracy)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">F1 Weighted:</span>
-              <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
+              <span className="text-ink-3">F1 Weighted:</span>
+              <span className="tabular-nums font-semibold text-accent">
                 {formatMetric(transformer.f1_weighted)}
               </span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Test Set Size:</span>
-              <span className="font-mono font-medium text-slate-800 dark:text-slate-200">
+              <span className="text-ink-3">Test Set Size:</span>
+              <span className="tabular-nums font-medium text-ink">
                 {transformer.test_samples ? `${transformer.test_samples} samples` : '—'}
               </span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-500">Benchmark Role:</span>
-              <span className="font-medium text-slate-700 dark:text-slate-300">{transformer.verified ? 'Benchmark' : 'Planned (gate ≥ 92%)'}</span>
+              <span className="text-ink-3">Benchmark Role:</span>
+              <span className="font-medium text-ink-2">{transformer.verified ? 'Benchmark' : 'Planned (gate ≥ 92%)'}</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Live Dual Inference Simulator */}
-      <div className="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-        <div className="border-b border-slate-100 dark:border-slate-800 pb-3">
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+      <div className="panel p-5 space-y-4">
+        <div className="border-b border-line/70 pb-3">
+          <h3 className="text-[15px] font-medium text-ink">
             Side-by-Side Dual Inference Simulator
           </h3>
-          <p className="text-[11px] text-slate-500 dark:text-slate-400">
+          <p className="text-[11px] text-ink-3">
             Simultaneously execute one inquiry on both Model A and Model B to inspect delta in classification & confidence
           </p>
         </div>
@@ -245,14 +237,14 @@ export default function ABTestingPage() {
             onChange={(e) => setTestText(e.target.value)}
             rows={3}
             placeholder="Type ticket inquiry to test against both variants simultaneously..."
-            className="w-full text-xs p-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 font-sans"
+            className="w-full text-xs p-3 rounded-lg bg-canvas/60 border border-line text-ink focus:outline-none focus:ring-1 focus:ring-accent/40 font-sans"
           />
 
           <div className="flex items-center gap-2">
             <button
               type="submit"
               disabled={loading || !testText.trim()}
-              className="px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs shadow-sm flex items-center gap-2 transition-all disabled:opacity-50"
+              className="px-4 py-2 rounded-md bg-ink text-surface hover:opacity-90 font-medium text-xs shadow-sm flex items-center gap-2 transition-all disabled:opacity-50"
             >
               <Send className="w-3.5 h-3.5" />
               <span>{loading ? 'Evaluating Dual Inference...' : 'Run Dual Inference (A vs B)'}</span>
@@ -262,15 +254,11 @@ export default function ABTestingPage() {
 
         {/* Dual results comparison */}
         {(resultA || resultB) && (
-          <div className="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+          <div className="space-y-3 pt-3 border-t border-line/70">
             {/* Agreement Status Banner */}
             {resultA && resultB && (
               <div
-                className={`p-2.5 rounded-lg flex items-center gap-2 text-xs border ${
-                  resultA.predicted_intent === resultB.predicted_intent
-                    ? 'bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900/40 text-emerald-800 dark:text-emerald-300'
-                    : 'bg-amber-50/60 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900/40 text-amber-800 dark:text-amber-300'
-                }`}
+                className={`p-2.5 rounded-lg flex items-center gap-2 text-xs border ${ resultA.predicted_intent === resultB.predicted_intent ? 'bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900/40 text-emerald-800 dark:text-emerald-300' : 'bg-amber-50/60 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900/40 text-amber-800 dark:text-amber-300' }`}
               >
                 {resultA.predicted_intent === resultB.predicted_intent ? (
                   <>
@@ -288,50 +276,50 @@ export default function ABTestingPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Result A */}
-              <div className="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+              <div className="p-4 rounded-lg bg-canvas/60 border border-line space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900 dark:text-white">Model A Result (LinearSVC)</span>
-                  <span className="text-[11px] font-mono text-slate-400 flex items-center gap-1">
+                  <span className="text-xs font-semibold text-ink">Model A Result (LinearSVC)</span>
+                  <span className="text-[11px] tabular-nums text-ink-3 flex items-center gap-1">
                     <Clock className="w-3 h-3" />
                     {formatLatency(resultA?.latency_ms || 0)}
                   </span>
                 </div>
-                <div className="text-base font-bold text-indigo-600 dark:text-indigo-400">
+                <div className="text-base font-medium text-accent">
                   {resultA?.predicted_intent}
                 </div>
-                <div className="text-xs text-slate-600 dark:text-slate-300 flex justify-between pt-1 border-t border-slate-200/60 dark:border-slate-700">
+                <div className="text-xs text-ink-2 flex justify-between pt-1 border-t border-line">
                   <span>Confidence:</span>
-                  <span className="font-mono font-semibold">
+                  <span className="tabular-nums font-semibold">
                     {((resultA?.confidence || 0) * 100).toFixed(1)}%
                   </span>
                 </div>
-                <div className="text-xs text-slate-600 dark:text-slate-300 flex justify-between">
+                <div className="text-xs text-ink-2 flex justify-between">
                   <span>Routed Team:</span>
-                  <span className="font-medium text-slate-800 dark:text-slate-200">{resultA?.routed_team}</span>
+                  <span className="font-medium text-ink">{resultA?.routed_team}</span>
                 </div>
               </div>
 
               {/* Result B */}
-              <div className="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+              <div className="p-4 rounded-lg bg-canvas/60 border border-line space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900 dark:text-white">Model B Result (Naive Bayes)</span>
-                  <span className="text-[11px] font-mono text-slate-400 flex items-center gap-1">
+                  <span className="text-xs font-semibold text-ink">Model B Result (Naive Bayes)</span>
+                  <span className="text-[11px] tabular-nums text-ink-3 flex items-center gap-1">
                     <Clock className="w-3 h-3" />
                     {formatLatency(resultB?.latency_ms || 0)}
                   </span>
                 </div>
-                <div className="text-base font-bold text-amber-600 dark:text-amber-400">
+                <div className="text-base font-medium text-amber-600 dark:text-amber-400">
                   {resultB?.predicted_intent}
                 </div>
-                <div className="text-xs text-slate-600 dark:text-slate-300 flex justify-between pt-1 border-t border-slate-200/60 dark:border-slate-700">
+                <div className="text-xs text-ink-2 flex justify-between pt-1 border-t border-line">
                   <span>Confidence:</span>
-                  <span className="font-mono font-semibold">
+                  <span className="tabular-nums font-semibold">
                     {((resultB?.confidence || 0) * 100).toFixed(1)}%
                   </span>
                 </div>
-                <div className="text-xs text-slate-600 dark:text-slate-300 flex justify-between">
+                <div className="text-xs text-ink-2 flex justify-between">
                   <span>Routed Team:</span>
-                  <span className="font-medium text-slate-800 dark:text-slate-200">{resultB?.routed_team}</span>
+                  <span className="font-medium text-ink">{resultB?.routed_team}</span>
                 </div>
               </div>
             </div>
