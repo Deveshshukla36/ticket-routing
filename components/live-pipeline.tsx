@@ -115,22 +115,22 @@ export function LivePipeline({ result, isProcessing }: LivePipelineProps) {
   ];
 
   return (
-    <div className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm overflow-hidden p-5 space-y-4">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+    <div className="w-full rounded-2xl border border-line bg-surface shadow-sm overflow-hidden p-5 space-y-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-line/70 pb-3">
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
-          <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <h4 className="text-[15px] font-medium text-ink">
             Execution Pipeline
           </h4>
-          <span className="text-[11px] text-slate-400 font-mono">
+          <span className="text-[11px] text-ink-3 tabular-nums">
             {isProcessing ? `Step ${currentStep + 1} of 6 • Processing...` : '6 Stages Executed'}
           </span>
         </div>
 
         {result && !isProcessing && (
           <div className="flex items-center gap-2 text-xs">
-            <span className="text-slate-500 dark:text-slate-400">Target Destination:</span>
-            <span className="font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-0.5 rounded border border-indigo-200/60 dark:border-indigo-800/40">
+            <span className="text-ink-3">Target Destination:</span>
+            <span className="font-semibold text-accent bg-accent-soft px-2 py-0.5 rounded border border-accent/40">
               {result.routed_team}
             </span>
           </div>
@@ -150,12 +150,12 @@ export function LivePipeline({ result, isProcessing }: LivePipelineProps) {
               className={cn(
                 'relative flex flex-col justify-between p-3.5 rounded-lg border transition-all',
                 stage.isFinal && isDone
-                  ? 'bg-indigo-50/70 dark:bg-indigo-950/40 border-indigo-300 dark:border-indigo-700/70 shadow-sm ring-1 ring-indigo-500/30'
+                  ? 'bg-accent-soft border-accent/40 shadow-sm ring-1 ring-accent/40'
                   : isDone
-                  ? 'bg-slate-50/70 dark:bg-slate-800/40 border-slate-200 dark:border-slate-700/60'
+                  ? 'bg-canvas/60 border-line/60'
                   : isActive
-                  ? 'bg-indigo-50/40 dark:bg-indigo-950/30 border-indigo-400 dark:border-indigo-500 ring-2 ring-indigo-500/20'
-                  : 'bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800/60 opacity-60'
+                  ? 'bg-accent-soft border-accent/40 ring-2 ring-accent/40'
+                  : 'bg-surface border-line/70/60 opacity-60'
               )}
             >
               {/* Header: Icon + Stage Indicator */}
@@ -164,28 +164,28 @@ export function LivePipeline({ result, isProcessing }: LivePipelineProps) {
                   className={cn(
                     'w-7 h-7 rounded-md flex items-center justify-center text-xs font-semibold',
                     stage.isFinal && isDone
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-ink text-surface'
                       : isDone
-                      ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200'
+                      ? 'bg-track/70 text-ink-2'
                       : isActive
-                      ? 'bg-indigo-600 text-white animate-pulse'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-400'
+                      ? 'bg-ink text-surface animate-pulse'
+                      : 'bg-track/70 text-ink-3'
                   )}
                 >
                   <Icon className="w-3.5 h-3.5" />
                 </div>
 
                 <div className="flex items-center gap-1">
-                  <span className="text-[10px] font-mono text-slate-400">0{stage.id}</span>
+                  <span className="text-[10px] tabular-nums text-ink-3">0{stage.id}</span>
                   {isDone ? (
                     <CheckCircle2
                       className={cn(
                         'w-3.5 h-3.5',
-                        stage.isFinal ? 'text-indigo-600 dark:text-indigo-400' : 'text-emerald-600 dark:text-emerald-400'
+                        stage.isFinal ? 'text-accent' : 'text-good-strong dark:text-good'
                       )}
                     />
                   ) : isActive ? (
-                    <span className="w-2 h-2 rounded-full bg-indigo-600 animate-ping" />
+                    <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
                   ) : null}
                 </div>
               </div>
@@ -193,31 +193,31 @@ export function LivePipeline({ result, isProcessing }: LivePipelineProps) {
               {/* Stage Names */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-semibold text-slate-900 dark:text-slate-100 truncate">
+                  <span className="text-[11px] font-semibold text-ink truncate">
                     {stage.title}
                   </span>
                 </div>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider truncate">
+                <p className="text-[10px] text-ink-3 truncate">
                   {stage.label}
                 </p>
 
                 {/* Derived Value */}
-                <div className="pt-1.5 border-t border-slate-100 dark:border-slate-800">
+                <div className="pt-1.5 border-t border-line/70">
                   <p
                     className={cn(
-                      'text-xs font-bold truncate',
+                      'text-xs font-semibold truncate',
                       stage.isFinal && isDone
-                        ? 'text-indigo-700 dark:text-indigo-300'
+                        ? 'text-accent'
                         : isDone
-                        ? 'text-slate-800 dark:text-slate-200'
+                        ? 'text-ink'
                         : isActive
-                        ? 'text-indigo-600 dark:text-indigo-400'
-                        : 'text-slate-400'
+                        ? 'text-accent'
+                        : 'text-ink-3'
                     )}
                   >
                     {stage.value}
                   </p>
-                  <p className="text-[10px] text-slate-400 truncate mt-0.5">
+                  <p className="text-[10px] text-ink-3 truncate mt-0.5">
                     {stage.detail}
                   </p>
                 </div>
@@ -225,7 +225,7 @@ export function LivePipeline({ result, isProcessing }: LivePipelineProps) {
 
               {/* Stage arrow indicator */}
               {idx < 5 && (
-                <div className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none text-slate-300 dark:text-slate-700">
+                <div className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none text-ink-3">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               )}
@@ -240,29 +240,29 @@ export function LivePipeline({ result, isProcessing }: LivePipelineProps) {
           className={cn(
             'p-3.5 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs border',
             result.requires_human_review
-              ? 'bg-purple-50/60 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900/50'
-              : 'bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900/50'
+              ? 'bg-bad-soft/60 border-bad/30'
+              : 'bg-good-soft/60 border-good/30'
           )}
         >
           <div className="flex items-center gap-2.5">
             {result.requires_human_review ? (
-              <AlertTriangle className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" />
+              <AlertTriangle className="w-4 h-4 text-bad-strong dark:text-bad shrink-0" />
             ) : (
-              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+              <ShieldCheck className="w-4 h-4 text-good-strong dark:text-good shrink-0" />
             )}
             <div>
-              <span className="font-semibold text-slate-900 dark:text-slate-100">
+              <span className="font-semibold text-ink">
                 {result.requires_human_review ? 'Dispatched to Human Review Queue' : 'Dispatched to Department Queue'}
               </span>
-              <span className="mx-1.5 text-slate-300 dark:text-slate-700">•</span>
-              <span className="text-slate-600 dark:text-slate-400">
-                Routed to <strong className="text-slate-900 dark:text-white font-semibold">{result.routed_team}</strong> with SLA target of <strong className="text-slate-900 dark:text-white font-semibold">{result.sla_label}</strong>.
+              <span className="mx-1.5 text-ink-3">•</span>
+              <span className="text-ink-2">
+                Routed to <strong className="text-ink font-semibold">{result.routed_team}</strong> with SLA target of <strong className="text-ink font-semibold">{result.sla_label}</strong>.
               </span>
             </div>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
-            <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 flex items-center gap-1">
+            <span className="text-[11px] tabular-nums text-ink-3 flex items-center gap-1">
               <Clock className="w-3 h-3" />
               {result.latency_ms.toFixed(1)}ms execution
             </span>

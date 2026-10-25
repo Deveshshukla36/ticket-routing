@@ -62,30 +62,22 @@ export default function AnalyticsPage() {
 
   // Calculate actual agreement rate if feedback exists
   const agreements = feedbackList.filter((f) => f.predicted_intent === f.correct_intent).length;
-  const agreementRate = feedbackList.length > 0 ? (agreements / feedbackList.length) * 100 : 96.2;
+  const agreementRate = feedbackList.length > 0 ? (agreements / feedbackList.length) * 100 : null;
 
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-5">
+      <div className="flex flex-col gap-4 pt-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">
-            <span>TELEMETRY</span>
-            <span>/</span>
-            <span className="text-indigo-600 dark:text-indigo-400 font-semibold">DRIFT & VOLUME</span>
-          </div>
-          <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-            Analytics & Drift Telemetry
-          </h2>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            Real-time intent volume tracking, sentiment distribution, and continuous feedback loop telemetry.
+          <h1 className="text-[34px] font-light leading-tight tracking-tight text-ink">Analytics</h1>
+          <p className="mt-1 max-w-2xl text-xs text-ink-3">
+            Intent volume, sentiment and human feedback from recent traffic.
           </p>
         </div>
 
         <button
           onClick={loadAnalytics}
-          className="p-1.5 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 transition-colors self-start sm:self-auto"
+          className="p-1.5 rounded-md bg-surface border border-line text-ink-2 hover:bg-track transition-colors self-start sm:self-auto"
           title="Refresh telemetry"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
@@ -95,29 +87,29 @@ export default function AnalyticsPage() {
       {/* Top Telemetry Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {/* Sentiment Ratio */}
-        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2.5">
+        <div className="panel p-4 space-y-2.5">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            <span className="text-[15px] font-medium text-ink">
               Customer Sentiment Valence
             </span>
-            <Smile className="w-4 h-4 text-slate-400" />
+            <Smile className="w-4 h-4 text-ink-3" />
           </div>
           <div className="grid grid-cols-3 gap-2 text-center pt-1">
             <div className="p-2 rounded-md bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-800/40">
-              <span className="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 block uppercase">Positive</span>
-              <span className="text-sm font-bold text-emerald-800 dark:text-emerald-300 font-mono">
+              <span className="text-[10px] font-semibold text-good-strong dark:text-good block">Positive</span>
+              <span className="text-sm font-semibold text-emerald-800 dark:text-emerald-300 tabular-nums">
                 {Math.round((pos / totalSentiment) * 100)}%
               </span>
             </div>
-            <div className="p-2 rounded-md bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-              <span className="text-[10px] font-semibold text-slate-600 dark:text-slate-400 block uppercase">Neutral</span>
-              <span className="text-sm font-bold text-slate-800 dark:text-slate-200 font-mono">
+            <div className="p-2 rounded-md bg-canvas/60 border border-line">
+              <span className="text-[10px] font-semibold text-ink-2 block">Neutral</span>
+              <span className="text-sm font-semibold text-ink tabular-nums">
                 {Math.round((neu / totalSentiment) * 100)}%
               </span>
             </div>
             <div className="p-2 rounded-md bg-rose-50 dark:bg-rose-950/40 border border-rose-200/60 dark:border-rose-800/40">
-              <span className="text-[10px] font-semibold text-rose-700 dark:text-rose-400 block uppercase">Negative</span>
-              <span className="text-sm font-bold text-rose-800 dark:text-rose-300 font-mono">
+              <span className="text-[10px] font-semibold text-rose-700 dark:text-rose-400 block">Negative</span>
+              <span className="text-sm font-semibold text-rose-800 dark:text-rose-300 tabular-nums">
                 {Math.round((neg / totalSentiment) * 100)}%
               </span>
             </div>
@@ -125,36 +117,36 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Human Review Agreement */}
-        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+        <div className="panel p-4 space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            <span className="text-[15px] font-medium text-ink">
               Review Agreement Rate
             </span>
             <CheckCircle2 className="w-4 h-4 text-emerald-500" />
           </div>
           <div>
-            <div className="text-2xl font-bold text-slate-900 dark:text-white font-mono">
-              {agreementRate.toFixed(1)}%
+            <div className="text-[28px] font-light leading-none text-ink tabular-nums">
+              {agreementRate === null ? '—' : `${agreementRate.toFixed(1)}%`}
             </div>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-[11px] text-ink-3 mt-1">
               Agreement rate between model predictions and agent reviews
             </p>
           </div>
         </div>
 
         {/* Feedback Samples Stored */}
-        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+        <div className="panel p-4 space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            <span className="text-[15px] font-medium text-ink">
               Ground Truth Samples
             </span>
-            <MessageSquare className="w-4 h-4 text-indigo-500" />
+            <MessageSquare className="w-4 h-4 text-accent" />
           </div>
           <div>
-            <div className="text-2xl font-bold text-slate-900 dark:text-white font-mono">
+            <div className="text-[28px] font-light leading-none text-ink tabular-nums">
               {feedbackList.length}
             </div>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-[11px] text-ink-3 mt-1">
               Curated correction records logged in database for retraining
             </p>
           </div>
@@ -163,24 +155,24 @@ export default function AnalyticsPage() {
 
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div className="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
-          <div className="border-b border-slate-100 dark:border-slate-800 pb-2.5">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+        <div className="panel p-5 space-y-3">
+          <div className="border-b border-line/70 pb-2.5">
+            <h3 className="text-[15px] font-medium text-ink">
               Intent Category Frequency
             </h3>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+            <p className="text-[11px] text-ink-3">
               Aggregated incoming volume across 8 intent classes
             </p>
           </div>
           <IntentDistributionChart data={stats?.intent_distribution || {}} />
         </div>
 
-        <div className="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
-          <div className="border-b border-slate-100 dark:border-slate-800 pb-2.5">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+        <div className="panel p-5 space-y-3">
+          <div className="border-b border-line/70 pb-2.5">
+            <h3 className="text-[15px] font-medium text-ink">
               Queue Load by Department
             </h3>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+            <p className="text-[11px] text-ink-3">
               Dispatched volume to specialized support queues
             </p>
           </div>
@@ -189,19 +181,19 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Feedback Records Table */}
-      <div className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-slate-200 dark:border-slate-800">
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+      <div className="panel overflow-hidden">
+        <div className="p-4 border-b border-line">
+          <h3 className="text-[15px] font-medium text-ink">
             Human Feedback & Correction Telemetry
           </h3>
-          <p className="text-[11px] text-slate-500 dark:text-slate-400">
+          <p className="text-[11px] text-ink-3">
             Recorded feedback instances for continuous retraining dataset curation
           </p>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-500 font-semibold border-b border-slate-200 dark:border-slate-800">
+            <thead className="bg-canvas/60 text-ink-3 font-semibold border-b border-line">
               <tr>
                 <th className="py-2.5 px-3.5">Ticket Text</th>
                 <th className="py-2.5 px-3.5">Model Prediction</th>
@@ -210,25 +202,25 @@ export default function AnalyticsPage() {
                 <th className="py-2.5 px-3.5">Notes</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+            <tbody className="divide-y divide-line/70 text-ink-2">
               {feedbackList.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="py-8 text-center text-slate-400">
+                  <td colSpan={5} className="py-8 text-center text-ink-3">
                     No human feedback recorded yet. Use the "Correct" button on any ticket to submit!
                   </td>
                 </tr>
               ) : (
                 feedbackList.map((f, idx) => (
-                  <tr key={idx} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
+                  <tr key={idx} className="hover:bg-track">
                     <td className="py-2.5 px-3.5 max-w-sm truncate" title={f.text}>
                       {f.text}
                     </td>
-                    <td className="py-2.5 px-3.5 font-mono text-slate-500">{f.predicted_intent}</td>
-                    <td className="py-2.5 px-3.5 font-mono font-semibold text-indigo-600 dark:text-indigo-400">
+                    <td className="py-2.5 px-3.5 tabular-nums text-ink-3">{f.predicted_intent}</td>
+                    <td className="py-2.5 px-3.5 tabular-nums font-semibold text-accent">
                       {f.correct_intent}
                     </td>
                     <td className="py-2.5 px-3.5">{f.reviewer || 'Agent'}</td>
-                    <td className="py-2.5 px-3.5 text-slate-400 italic">{f.notes || '—'}</td>
+                    <td className="py-2.5 px-3.5 text-ink-3 italic">{f.notes || '—'}</td>
                   </tr>
                 ))
               )}
