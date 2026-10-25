@@ -1,0 +1,25 @@
+# Render Blueprint for the FastAPI backend (native Python runtime).
+# Python version comes from .python-version (3.11). Secrets are marked sync: false,
+# so Render asks for them when the Blueprint is first applied; they are never committed.
+services:
+  - type: web
+    name: intentroute-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # --app-dir puts backend/ on sys.path; the backend uses top-level imports (config, ml, ...).
+    startCommand: uvicorn main:app --app-dir backend --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: MODEL_BACKEND
+        value: roberta
+      - key: CONFIDENCE_THRESHOLD
+        value: "0.60"
+      - key: DATABASE_URL
+        sync: false
+      - key: HF_API_TOKEN
+        sync: false
+      - key: HF_MODEL_ID
+        sync: false
