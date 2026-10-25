@@ -179,7 +179,7 @@ change `tailwind.config.ts` (for example "`rounded-panel` class does not
 exist"), stop it, delete `.next/cache`, and start it again. Next.js can
 keep serving a cached failed build.
 
-**Training RoBERTa** happens locally only. You need `pip install -r requirements-ml.txt`, which also has the GPU install line. Then use `backend/train_transformer.py` and push the result to the Hugging Face Hub (deploy step 2).
+**Training RoBERTa** happens locally, on your GPU. Follow [docs/training-roberta.md](docs/training-roberta.md): install the CUDA build of torch and `requirements-ml.txt`, run `backend/train_transformer.py` (leak-free split, checkpoint chosen by validation loss, accuracy measured once on the holdout), then upload with `scripts/push_to_hub.py`.
 
 ## Deploy
 
