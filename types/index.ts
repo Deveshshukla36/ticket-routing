@@ -39,7 +39,10 @@ export interface RouteResult {
 }
 
 export interface HealthStatus {
-  status: 'healthy' | 'degraded' | 'unhealthy';
+  status: 'ok' | 'degraded' | 'error';
+  backend: 'sklearn' | 'roberta';
+  model_versions: Record<string, string>;
+  db: 'ok' | 'error';
   model_loaded: boolean;
   model_version: string;
   uptime_seconds: number;
@@ -62,8 +65,9 @@ export interface ModelRegistryItem {
   name: string;
   variant: string;
   architecture: string;
-  accuracy: number;
-  f1_score: number;
+  accuracy: number | null; // null until the model has a reproducible evaluation
+  f1_score: number | null;
+  evaluated_on?: string | null;
   status: string;
   benchmark: boolean;
   description: string;
@@ -100,8 +104,37 @@ export interface AIResponseResult {
   source: string;
 }
 
+/** A /monitoring/recent item: either a /classify or a /route result (they name the intent differently). */
+export interface RecentTicket {
+  ticket_id?: string;
+  text: string;
+  predicted_intent?: string; // /classify results
+  intent?: string; // /route results
+  confidence: number;
+  routed_team: string;
+  priority: string;
+  requires_human_review?: boolean;
+  model_version: string;
+  latency_ms: number;
+  timestamp: string;
+  sentiment?: string;
+  sla_hours?: number;
+  variant?: string;
+}
+
+export interface ServiceMetrics {
+  model_backend: 'sklearn' | 'roberta';
+  uptime_seconds: number;
+  requests_total: number;
+  requests_by_status: Record<string, number>;
+  latency_ms: { p50: number | null; p95: number | null; samples: number; window: number };
+  routes: Record<string, { count: number; p50_ms: number | null; p95_ms: number | null }>;
+  predictions: { by_backend: Record<string, number>; fallbacks_by_reason: Record<string, number> };
+  circuit_breaker: { state: 'closed' | 'open' | 'half_open'; consecutive_failures: number } | null;
+}
+
 export interface MonitoringStats {
-  recent: ClassificationResult[];
+  recent: RecentTicket[];
   total_logged: number;
   intent_distribution: Record<string, number>;
   avg_confidence: number;
